@@ -1,7 +1,8 @@
-package com.example.pathway_jogging;
+package com.example.pathway_jogging.landing;
 
 import android.os.Bundle;
 
+import com.example.pathway_jogging.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

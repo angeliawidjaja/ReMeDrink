@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pathway_jogging">
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_home" />
+            android:label="@string/pathway_jogging" />
+        <activity
+            android:name=".landing.HomeActivity"
+            android:exported="true"
+            android:label="@string/title_home" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

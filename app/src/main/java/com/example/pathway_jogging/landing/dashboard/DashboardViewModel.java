@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.ui.dashboard;
+package com.example.pathway_jogging.landing.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

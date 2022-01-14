@@ -1,9 +1,26 @@
 <resources>
     <string name="app_name">pathway_jogging</string>
     <string name="pathway_jogging">Pathway\nJogging</string>
-    <string name="title_activity_home">HomeActivity</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="splash_quote">“I don’t run to add days to my life,\nI run to add life to my days.”\n- Ronald Rook -</string>
+
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="or">&#160;or&#160;</string>
+
+    <string name="email">Email</string>
+    <string name="prompt_email">Enter your email address</string>
+    <string name="invalid_email">Not a valid email format</string>
+
+    <string name="password">Password</string>
+    <string name="prompt_password">Enter your password</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+
+    <string name="login_welcome">Welcome to Pathway Jogging!</string>
+
+    <string name="welcome">"Welcome !"</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

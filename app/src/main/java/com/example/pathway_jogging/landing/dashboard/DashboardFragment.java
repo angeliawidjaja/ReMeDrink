@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.ui.dashboard;
+package com.example.pathway_jogging.landing.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.pathway_jogging.R;
 import com.example.pathway_jogging.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
