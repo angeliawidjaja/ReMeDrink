@@ -1,11 +1,11 @@
-package com.example.pathway_jogging.ui.login;
+package com.example.pathway_jogging.app.login.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.example.pathway_jogging.data.LoginDataSource;
-import com.example.pathway_jogging.data.LoginRepository;
+import com.example.pathway_jogging.app.login.data.LoginDataSource;
+import com.example.pathway_jogging.app.login.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

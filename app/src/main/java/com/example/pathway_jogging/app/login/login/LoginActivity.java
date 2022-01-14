@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.ui.login;
+package com.example.pathway_jogging.app.login.login;
 
 import android.app.Activity;
 
@@ -19,8 +19,6 @@ import android.widget.Toast;
 
 import com.example.pathway_jogging.R;
 import com.example.pathway_jogging.databinding.ActivityLoginBinding;
-
-import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 

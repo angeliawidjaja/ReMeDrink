@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.data.model;
+package com.example.pathway_jogging.app.login.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

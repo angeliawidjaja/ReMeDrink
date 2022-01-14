@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.landing.home;
+package com.example.pathway_jogging.app.landing.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

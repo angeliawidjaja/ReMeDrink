@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.landing;
+package com.example.pathway_jogging.app.landing;
 
 import android.os.Bundle;
 

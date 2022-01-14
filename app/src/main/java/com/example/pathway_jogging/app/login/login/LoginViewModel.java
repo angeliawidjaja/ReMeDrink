@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.ui.login;
+package com.example.pathway_jogging.app.login.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.example.pathway_jogging.data.LoginRepository;
-import com.example.pathway_jogging.data.Result;
-import com.example.pathway_jogging.data.model.LoggedInUser;
+import com.example.pathway_jogging.app.login.data.LoginRepository;
+import com.example.pathway_jogging.app.login.data.Result;
+import com.example.pathway_jogging.app.login.data.model.LoggedInUser;
 import com.example.pathway_jogging.R;
 
 public class LoginViewModel extends ViewModel {

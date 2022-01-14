@@ -1,6 +1,6 @@
-package com.example.pathway_jogging.data;
+package com.example.pathway_jogging.app.login.data;
 
-import com.example.pathway_jogging.data.model.LoggedInUser;
+import com.example.pathway_jogging.app.login.data.model.LoggedInUser;
 
 import java.io.IOException;
 

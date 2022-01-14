@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.ui.login;
+package com.example.pathway_jogging.app.login.login;
 
 /**
  * Class exposing authenticated user details to the UI.

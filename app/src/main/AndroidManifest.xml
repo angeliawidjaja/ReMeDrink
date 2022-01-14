@@ -10,15 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pathway_jogging">
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".app.login.login.LoginActivity"
             android:exported="true"
             android:label="@string/pathway_jogging" />
         <activity
-            android:name=".landing.HomeActivity"
+            android:name=".app.landing.HomeActivity"
             android:exported="true"
             android:label="@string/title_home" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".app.splash.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

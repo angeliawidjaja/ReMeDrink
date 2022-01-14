@@ -1,4 +1,4 @@
-package com.example.pathway_jogging;
+package com.example.pathway_jogging.app.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.example.pathway_jogging.landing.HomeActivity;
-import com.example.pathway_jogging.ui.login.LoginActivity;
+import com.example.pathway_jogging.R;
+import com.example.pathway_jogging.app.login.login.LoginActivity;
 
 import java.util.Objects;
 
