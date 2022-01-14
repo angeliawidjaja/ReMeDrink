@@ -11,16 +11,30 @@
     <string name="register">Register</string>
     <string name="or">&#160;or&#160;</string>
 
+    <string name="fullname">Full Name</string>
+    <string name="prompt_fullname">Enter your full name</string>
+    <string name="invalid_fullname">Full name must not be empty</string>
+
+    <string name="username">Username</string>
+    <string name="prompt_username">Enter a username</string>
+    <string name="invalid_username">Username must not be empty</string>
+
     <string name="email">Email</string>
     <string name="prompt_email">Enter your email address</string>
-    <string name="invalid_email">Not a valid email format</string>
+    <string name="invalid_email">Email format not valid</string>
 
     <string name="password">Password</string>
     <string name="prompt_password">Enter your password</string>
     <string name="invalid_password">Password must be >5 characters</string>
 
+    <string name="confirm_password">Confirm Password</string>
+    <string name="prompt_confirm_password">Enter your password again</string>
+    <string name="invalid_confirm_password">Password and Confirm Password must be match</string>
+
     <string name="login_welcome">Welcome to Pathway Jogging!</string>
+    <string name="register_welcome">Create Account</string>
 
     <string name="welcome">"Welcome !"</string>
     <string name="login_failed">"Login failed"</string>
+
 </resources>

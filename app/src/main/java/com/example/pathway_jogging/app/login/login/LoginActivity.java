@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.StringRes;
@@ -18,12 +19,15 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.pathway_jogging.R;
+import com.example.pathway_jogging.app.register.login.RegisterActivity;
 import com.example.pathway_jogging.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private Button loginButton;
+    private Button registerButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,67 +35,65 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        initComponents();
         initViewModel();
+        initListener();
+        handleObserveFormValidationResult(); // Not Yet
+        handleObserveLoginResult(); // Not Yet
+    }
 
-        final EditText usernameEditText = binding.email;
-        final EditText passwordEditText = binding.password;
-        final Button loginButton = binding.layoutBtnLoginRegister.btnAbove;
-        final ProgressBar loadingProgressBar = binding.loading;
+    private void doLogin() {
+        binding.loading.setVisibility(View.VISIBLE);
+        loginViewModel.login(binding.email.getText().toString(),
+                binding.password.getText().toString());
+    }
 
+    private void handleObserveLoginResult() {
+        loginViewModel.getLoginResult().observe(this, loginResult -> {
+            if (loginResult == null) {
+                return;
+            }
+            binding.loading.setVisibility(View.GONE);
+            if (loginResult.getError() != null) {
+                showLoginFailed(loginResult.getError());
+            }
+            if (loginResult.getSuccess() != null) {
+                handleLoginSuccess(loginResult.getSuccess());
+            }
+        });
+    }
+
+    private void handleObserveFormValidationResult() {
         loginViewModel.getLoginFormState().observe(this, loginFormState -> {
             if (loginFormState == null) {
                 return;
             }
             loginButton.setEnabled(loginFormState.isDataValid());
-            if (loginFormState.getUsernameError() != null) {
-                usernameEditText.setError(getString(loginFormState.getUsernameError()));
+            if (loginFormState.getEmailError() != null) {
+                binding.email.setError(getString(loginFormState.getEmailError()));
             }
             if (loginFormState.getPasswordError() != null) {
-                passwordEditText.setError(getString(loginFormState.getPasswordError()));
+                binding.password.setError(getString(loginFormState.getPasswordError()));
             }
         });
+    }
 
-        loginViewModel.getLoginResult().observe(this, loginResult -> {
-            if (loginResult == null) {
-                return;
-            }
-            loadingProgressBar.setVisibility(View.GONE);
-            if (loginResult.getError() != null) {
-                showLoginFailed(loginResult.getError());
-            }
-            if (loginResult.getSuccess() != null) {
-                updateUiWithUser(loginResult.getSuccess());
-            }
-            setResult(Activity.RESULT_OK);
+    private void initComponents() {
+        loginButton = binding.layoutBtnLoginRegister.btnAbove;
+        registerButton = binding.layoutBtnLoginRegister.btnBelow;
+    }
 
-            //Complete and destroy login activity once successful
-            finish();
-        });
-
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.validateLoginData(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-            }
-        };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-
+    private void initListener() {
         loginButton.setOnClickListener(v -> {
-            loadingProgressBar.setVisibility(View.VISIBLE);
-            loginViewModel.login(usernameEditText.getText().toString(),
-                    passwordEditText.getText().toString());
+            if(loginViewModel.validateLoginData(binding.email.getText().toString(),
+                    binding.password.getText().toString())) {
+                doLogin();
+            }
+        });
+
+        registerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -100,10 +102,11 @@ public class LoginActivity extends AppCompatActivity {
                 .get(LoginViewModel.class);
     }
 
-    private void updateUiWithUser(LoggedInUserView model) {
+    private void handleLoginSuccess(LoggedInUserView model) {
+        // Save Into Shared Pref
         String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+//        finish();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

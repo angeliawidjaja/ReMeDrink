@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pathway_jogging">
         <activity
+            android:name=".app.register.login.RegisterActivity"
+            android:exported="true"
+            android:label="@string/pathway_jogging" />
+        <activity
             android:name=".app.login.login.LoginActivity"
             android:exported="true"
             android:label="@string/pathway_jogging" />
