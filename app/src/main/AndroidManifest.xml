@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pathway_jogging">
+
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
 
     <application
         android:allowBackup="true"
@@ -8,11 +12,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pathway_jogging">
+        android:theme="@style/Theme.Pathway_jogging"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".app.register.login.RegisterActivity"
             android:exported="true"
+<<<<<<< HEAD
             android:label="@string/pathway_jogging" />
+=======
+            android:label="@string/title_activity_home" />
+
+>>>>>>> 738a5183df3cdff4cc6c4e7a2c02d2b94a59a3b2
         <activity
             android:name=".app.login.login.LoginActivity"
             android:exported="true"
@@ -26,7 +41,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
