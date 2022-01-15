@@ -1,48 +1,41 @@
-package com.example.pathway_jogging.app.register.login;
+package com.example.pathway_jogging.app.register;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import android.util.Log;
 import android.util.Patterns;
 
 import com.example.pathway_jogging.R;
-import com.example.pathway_jogging.app.register.data.LoginRepository;
-import com.example.pathway_jogging.app.register.data.Result;
-import com.example.pathway_jogging.app.register.data.model.LoggedInUser;
+import com.example.pathway_jogging.repository.Repository;
 
 public class RegisterViewModel extends ViewModel {
 
-    private MutableLiveData<RegisterFormState> registerFormState = new MutableLiveData<>();
-    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
-    private LoginRepository loginRepository;
-
-    RegisterViewModel(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
-    }
+    private final MutableLiveData<RegisterFormState> registerFormState = new MutableLiveData<>();
+    private final MutableLiveData<RegisterResponse> registerResponse = new MutableLiveData<>();
+    private final Repository repository = Repository.getInstance();
 
     LiveData<RegisterFormState> getRegisterFormState() {
         return registerFormState;
     }
 
-    LiveData<LoginResult> getLoginResult() {
-        return loginResult;
+    LiveData<RegisterResponse> getRegisterResponse() {
+        return registerResponse;
     }
 
-    public void register(String fullname, String username, String email, String password, String confirmpassword) {
-        // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
-
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-        } else {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
+    public void register(String fullName, String username, String email, String password) {
+        repository.addNewUser(fullName, username, email, password, response -> {
+            if (response != null) {
+                registerResponse.setValue(response);
+            } else {
+                registerResponse.setValue(new RegisterResponse(R.string.register_failed));
+            }
+        });
     }
 
-    public boolean validateRegisterData(String fullname, String username, String email, String password, String confirmPassword) {
-        if (!isFullNameValid(fullname)) {
+    public boolean validateRegisterData(String fullName, String username, String email, String password, String confirmPassword) {
+        if (!isFullNameValid(fullName)) {
             registerFormState.setValue(new RegisterFormState(R.string.invalid_fullname, null, null, null, null));
         } else if (!isUserNameValid(username)) {
             registerFormState.setValue(new RegisterFormState(null, R.string.invalid_username, null, null, null));
@@ -59,8 +52,8 @@ public class RegisterViewModel extends ViewModel {
         return false;
     }
 
-    private boolean isFullNameValid(String fullname) {
-        return fullname != null && fullname.trim().length() > 3 && fullname.matches("[ A-Za-z0-9]+$");
+    private boolean isFullNameValid(String fullName) {
+        return fullName != null && fullName.trim().length() > 3 && fullName.matches("[A-Za-z ]+");
     }
 
     private boolean isUserNameValid(String username) {

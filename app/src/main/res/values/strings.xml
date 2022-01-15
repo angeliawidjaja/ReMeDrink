@@ -34,7 +34,8 @@
     <string name="login_welcome">Welcome to Pathway Jogging!</string>
     <string name="register_welcome">Create Account</string>
 
-    <string name="welcome">"Welcome !"</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_login_account">Please login with your new account</string>
+    <string name="login_failed">"Login Failed"</string>
+    <string name="register_failed">Register Failed</string>
 
 </resources>

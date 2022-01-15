@@ -1,4 +1,4 @@
-package com.example.pathway_jogging.app.register.login;
+package com.example.pathway_jogging.app.register;
 
 import androidx.annotation.Nullable;
 

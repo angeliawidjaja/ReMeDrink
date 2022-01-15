@@ -43,7 +43,7 @@
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="16dp">
 
-                    <!-- Username -->
+                    <!-- Full Name -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -57,8 +57,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:hint="@string/prompt_fullname"
                         android:inputType="textPersonName"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+                        android:hint="@string/prompt_fullname"
                         android:selectAllOnFocus="true" />
 
                     <!-- Username -->

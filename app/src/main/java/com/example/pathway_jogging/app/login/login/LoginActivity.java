@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.pathway_jogging.R;
-import com.example.pathway_jogging.app.register.login.RegisterActivity;
+import com.example.pathway_jogging.app.register.RegisterActivity;
 import com.example.pathway_jogging.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleLoginSuccess(LoggedInUserView model) {
         // Save Into Shared Pref
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
+        String welcome = "Hi " + model.getDisplayName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
 //        finish();
     }
