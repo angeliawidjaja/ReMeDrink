@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.StringRes;
@@ -13,12 +14,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.pathway_jogging.R;
+import com.example.pathway_jogging.app.landing.HomeActivity;
 import com.example.pathway_jogging.app.register.RegisterActivity;
 import com.example.pathway_jogging.databinding.ActivityLoginBinding;
+import com.example.pathway_jogging.datamodel.UserLoginData;
 import com.example.pathway_jogging.datamodel.UserResponse;
 
 public class LoginActivity extends AppCompatActivity {
-
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
     private Button loginButton;
@@ -97,10 +99,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleLoginSuccess(UserResponse user) {
-        // Save Into Shared Pref
-        String welcome = "Hi " + user.getFullname();
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-//        finish();
+        saveUserIntoSharedPref(user);
+        Toast.makeText(getApplicationContext(), getString(R.string.text_welcome) + user.getFullname(), Toast.LENGTH_LONG).show();
+        intentToHome();
+    }
+
+    private void intentToHome() {
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void saveUserIntoSharedPref(UserResponse user) {
+        UserLoginData loginData = new UserLoginData(getApplicationContext());
+        loginData.saveUser(user);
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
