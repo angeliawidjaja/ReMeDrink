@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Angelia/#Semester 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_home.xml" value="0.121875" />
         <entry key="..\:/Angelia/#Semester 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_splash_screen.xml" value="0.128" />
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.19583333333333333" />
@@ -11,6 +12,16 @@
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/drawable/shadow.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/layout/fragment_dashboard.xml" value="0.12364130434782608" />
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+=======
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/drawable/green_button_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_home.xml" value="0.17346014492753623" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_jogging1.xml" value="0.33" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_splash_screen.xml" value="0.17346014492753623" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/jogging_1.xml" value="0.22" />
+>>>>>>> origin
       </map>
     </option>
   </component>
