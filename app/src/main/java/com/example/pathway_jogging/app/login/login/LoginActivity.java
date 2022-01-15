@@ -1,7 +1,5 @@
 package com.example.pathway_jogging.app.login.login;
 
-import android.app.Activity;
-
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -9,13 +7,8 @@ import android.os.Bundle;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.pathway_jogging.R;
@@ -38,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         initComponents();
         initViewModel();
         initListener();
-        handleObserveFormValidationResult(); // Not Yet
-        handleObserveLoginResult(); // Not Yet
+        handleObserveFormValidationResult();
+        handleObserveLoginResult();
     }
 
     private void doLogin() {
@@ -68,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
             if (loginFormState == null) {
                 return;
             }
-            loginButton.setEnabled(loginFormState.isDataValid());
             if (loginFormState.getEmailError() != null) {
                 binding.email.setError(getString(loginFormState.getEmailError()));
             }

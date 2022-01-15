@@ -13,7 +13,7 @@
 
     <string name="fullname">Full Name</string>
     <string name="prompt_fullname">Enter your full name</string>
-    <string name="invalid_fullname">Full name must not be empty</string>
+    <string name="invalid_fullname">Full name must be >3 alphanumeric characters</string>
 
     <string name="username">Username</string>
     <string name="prompt_username">Enter a username</string>

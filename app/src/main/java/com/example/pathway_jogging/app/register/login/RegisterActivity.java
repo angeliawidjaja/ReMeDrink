@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -23,8 +22,10 @@ import com.example.pathway_jogging.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private LoginViewModel loginViewModel;
+    private RegisterViewModel registerViewModel;
     private ActivityRegisterBinding binding;
+    private Button registerButton;
+    private Button loginButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,28 +34,16 @@ public class RegisterActivity extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        initComponents();
         initViewModel();
         initListener();
+        handleObserveFormValidationResult();
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
-        final Button loginButton = binding.layoutBtnLoginRegister.btnAbove;
         final ProgressBar loadingProgressBar = binding.loading;
 
-        loginViewModel.getLoginFormState().observe(this, loginFormState -> {
-            if (loginFormState == null) {
-                return;
-            }
-            loginButton.setEnabled(loginFormState.isDataValid());
-            if (loginFormState.getUsernameError() != null) {
-                usernameEditText.setError(getString(loginFormState.getUsernameError()));
-            }
-            if (loginFormState.getPasswordError() != null) {
-                passwordEditText.setError(getString(loginFormState.getPasswordError()));
-            }
-        });
-
-        loginViewModel.getLoginResult().observe(this, loginResult -> {
+        registerViewModel.getLoginResult().observe(this, loginResult -> {
             if (loginResult == null) {
                 return;
             }
@@ -70,50 +59,61 @@ public class RegisterActivity extends AppCompatActivity {
             //Complete and destroy login activity once successful
             finish();
         });
+    }
 
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
+    private void handleObserveFormValidationResult() {
+        registerViewModel.getRegisterFormState().observe(this, registerFormState -> {
+            if (registerFormState == null) return;
+            if(registerFormState.getFullnameError() != null) {
+                binding.fullname.setError(getString(registerFormState.getFullnameError()));
             }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
+            if (registerFormState.getUsernameError() != null) {
+                binding.username.setError(getString(registerFormState.getUsernameError()));
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+            if(registerFormState.getEmailError() != null) {
+                binding.email.setError(getString(registerFormState.getEmailError()));
             }
-        };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+            if (registerFormState.getPasswordError() != null) {
+                binding.password.setError(getString(registerFormState.getPasswordError()));
             }
-            return false;
-        });
-
-        loginButton.setOnClickListener(v -> {
-            loadingProgressBar.setVisibility(View.VISIBLE);
-            loginViewModel.login(usernameEditText.getText().toString(),
-                    passwordEditText.getText().toString());
+            if(registerFormState.getConfirmPasswordError() != null) {
+                binding.confirmPassword.setError(getString(registerFormState.getConfirmPasswordError()));
+            }
         });
     }
 
+    private void initComponents() {
+        registerButton = binding.layoutBtnLoginRegister.btnAbove;
+        loginButton = binding.layoutBtnLoginRegister.btnBelow;
+    }
+
     private void initListener() {
-        binding.layoutBtnLoginRegister.btnBelow.setOnClickListener(v -> {
+        registerButton.setOnClickListener(v -> {
+            String fullname, username, email, password, confirmpassword;
+            fullname = binding.fullname.toString();
+            username = binding.username.toString();
+            email = binding.email.toString();
+            password = binding.password.toString();
+            confirmpassword = binding.confirmPassword.toString();
+
+            if(registerViewModel.validateRegisterData(fullname, username, email, password, confirmpassword)) {
+                doRegister(fullname, username, email, password, confirmpassword);
+            }
+        });
+
+        loginButton.setOnClickListener(v -> {
             finish();
         });
     }
 
+    private void doRegister(String fullname, String username, String email, String password, String confirmpassword) {
+        binding.loading.setVisibility(View.VISIBLE);
+        registerViewModel.register(fullname, username, email, password, confirmpassword);
+    }
+
     private void initViewModel() {
-        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
+        registerViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
+                .get(RegisterViewModel.class);
     }
 
     private void updateUiWithUser(LoggedInUserView model) {

@@ -30,7 +30,6 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(String email, String password) {
-        // can be launched in a separate asynchronous job
         Result<LoggedInUser> result = loginRepository.login(email, password);
 
         if (result instanceof Result.Success) {
@@ -47,7 +46,7 @@ public class LoginViewModel extends ViewModel {
         } else if (!isPasswordValid(password)) {
             loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
         } else {
-            loginFormState.setValue(new LoginFormState(true));
+            loginFormState.setValue(new LoginFormState());
             return true;
         }
         return false;

@@ -10,18 +10,15 @@ class LoginFormState {
     private Integer emailError;
     @Nullable
     private Integer passwordError;
-    private boolean isDataValid;
 
     LoginFormState(@Nullable Integer emailError, @Nullable Integer passwordError) {
         this.emailError = emailError;
         this.passwordError = passwordError;
-        this.isDataValid = false;
     }
 
-    LoginFormState(boolean isDataValid) {
+    LoginFormState() {
         this.emailError = null;
         this.passwordError = null;
-        this.isDataValid = isDataValid;
     }
 
     @Nullable
@@ -32,9 +29,5 @@ class LoginFormState {
     @Nullable
     Integer getPasswordError() {
         return passwordError;
-    }
-
-    boolean isDataValid() {
-        return isDataValid;
     }
 }
