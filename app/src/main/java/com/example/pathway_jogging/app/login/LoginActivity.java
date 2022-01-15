@@ -1,5 +1,6 @@
-package com.example.pathway_jogging.app.login.login;
+package com.example.pathway_jogging.app.login;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.pathway_jogging.R;
 import com.example.pathway_jogging.app.register.RegisterActivity;
 import com.example.pathway_jogging.databinding.ActivityLoginBinding;
+import com.example.pathway_jogging.datamodel.UserResponse;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleObserveLoginResult() {
-        loginViewModel.getLoginResult().observe(this, loginResult -> {
+        loginViewModel.getLoginResponse().observe(this, loginResult -> {
             if (loginResult == null) {
                 return;
             }
@@ -50,8 +52,8 @@ public class LoginActivity extends AppCompatActivity {
             if (loginResult.getError() != null) {
                 showLoginFailed(loginResult.getError());
             }
-            if (loginResult.getSuccess() != null) {
-                handleLoginSuccess(loginResult.getSuccess());
+            else {
+                handleLoginSuccess(loginResult);
             }
         });
     }
@@ -94,14 +96,19 @@ public class LoginActivity extends AppCompatActivity {
                 .get(LoginViewModel.class);
     }
 
-    private void handleLoginSuccess(LoggedInUserView model) {
+    private void handleLoginSuccess(UserResponse user) {
         // Save Into Shared Pref
-        String welcome = "Hi " + model.getDisplayName();
+        String welcome = "Hi " + user.getFullname();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
 //        finish();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle(R.string.text_error);
+        alertDialogBuilder.setMessage(errorString);
+        alertDialogBuilder.setCancelable(true);
+        alertDialogBuilder.setPositiveButton(R.string.text_ok, (dialog, which) -> dialog.dismiss());
+        alertDialogBuilder.create().show();
     }
 }

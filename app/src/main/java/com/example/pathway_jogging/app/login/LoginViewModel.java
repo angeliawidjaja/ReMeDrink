@@ -1,43 +1,39 @@
-package com.example.pathway_jogging.app.login.login;
+package com.example.pathway_jogging.app.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.util.Patterns;
-
-import com.example.pathway_jogging.app.login.data.LoginRepository;
-import com.example.pathway_jogging.app.login.data.Result;
-import com.example.pathway_jogging.app.login.data.model.LoggedInUser;
 import com.example.pathway_jogging.R;
+import com.example.pathway_jogging.datamodel.UserResponse;
+import com.example.pathway_jogging.repository.Repository;
 
 public class LoginViewModel extends ViewModel {
 
-    private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
-    private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
-    private LoginRepository loginRepository;
-
-    LoginViewModel(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
-    }
+    private final MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
+    private final MutableLiveData<UserResponse> loginResponse = new MutableLiveData<>();
+    private final Repository repository = Repository.getInstance();
 
     LiveData<LoginFormState> getLoginFormState() {
         return loginFormState;
     }
 
-    LiveData<LoginResult> getLoginResult() {
-        return loginResult;
+    public MutableLiveData<UserResponse> getLoginResponse() {
+        return loginResponse;
     }
 
     public void login(String email, String password) {
-        Result<LoggedInUser> result = loginRepository.login(email, password);
-
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-        } else {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
+        repository.getUsers(userList -> {
+            if(userList != null && !userList.isEmpty()) {
+                for (UserResponse user: userList) {
+                    if(user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                        loginResponse.setValue(user);
+                        return;
+                    }
+                }
+            }
+            loginResponse.setValue(new UserResponse(R.string.invalid_email_or_password));
+        });
     }
 
     public boolean validateLoginData(String email, String password) {

@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.example.pathway_jogging.R;
-import com.example.pathway_jogging.app.login.login.LoginActivity;
+import com.example.pathway_jogging.app.login.LoginActivity;
 
 import java.util.Objects;
 

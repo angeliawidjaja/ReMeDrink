@@ -39,6 +39,7 @@
     <string name="register_failed">Register Failed</string>
     <string name="username_already_exists">Username already exists. Please try another username.</string>
     <string name="email_already_exists">The email has been registered.</string>
+    <string name="invalid_email_or_password">Invalid Email or Password</string>
 
     <string name="text_error">Error</string>
     <string name="text_ok">OK</string>
