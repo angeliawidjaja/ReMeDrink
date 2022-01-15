@@ -1,9 +1,12 @@
 package com.example.pathway_jogging.retrofit;
 
-import com.example.pathway_jogging.app.register.RegisterResponse;
+import com.example.pathway_jogging.datamodel.UserResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -11,11 +14,11 @@ import retrofit2.http.POST;
  */
 public interface ApiService {
     @POST("users/")
-    Call<RegisterResponse> createUser(@Body RegisterResponse register);
+    Call<UserResponse> createUser(@Body UserResponse register);
 
-//    @GET("users/")
-//    Call<UserListResponse> getCurrentUser();
-//
+    @GET("users/")
+    Call<List<UserResponse>> getUserList();
+
 //    @GET("users/{id}")
 //    Call<UserListDetailResponse> getUserDetail(@Path("id") int id);
 }

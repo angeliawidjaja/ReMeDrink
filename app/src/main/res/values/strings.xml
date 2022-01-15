@@ -37,5 +37,10 @@
     <string name="prompt_login_account">Please login with your new account</string>
     <string name="login_failed">"Login Failed"</string>
     <string name="register_failed">Register Failed</string>
+    <string name="username_already_exists">Username already exists. Please try another username.</string>
+    <string name="email_already_exists">The email has been registered.</string>
+
+    <string name="text_error">Error</string>
+    <string name="text_ok">OK</string>
 
 </resources>

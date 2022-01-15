@@ -4,33 +4,51 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.util.Log;
 import android.util.Patterns;
 
 import com.example.pathway_jogging.R;
+import com.example.pathway_jogging.datamodel.UserResponse;
 import com.example.pathway_jogging.repository.Repository;
+
+import java.util.Collection;
 
 public class RegisterViewModel extends ViewModel {
 
     private final MutableLiveData<RegisterFormState> registerFormState = new MutableLiveData<>();
-    private final MutableLiveData<RegisterResponse> registerResponse = new MutableLiveData<>();
+    private final MutableLiveData<UserResponse> registerResponse = new MutableLiveData<>();
     private final Repository repository = Repository.getInstance();
 
     LiveData<RegisterFormState> getRegisterFormState() {
         return registerFormState;
     }
 
-    LiveData<RegisterResponse> getRegisterResponse() {
+    LiveData<UserResponse> getRegisterResponse() {
         return registerResponse;
     }
 
     public void register(String fullName, String username, String email, String password) {
-        repository.addNewUser(fullName, username, email, password, response -> {
-            if (response != null) {
-                registerResponse.setValue(response);
-            } else {
-                registerResponse.setValue(new RegisterResponse(R.string.register_failed));
+        repository.getUsers(userList -> {
+            if(userList != null && !userList.isEmpty()) {
+                for (UserResponse user: userList) {
+                    if(user.getUsername().equals(username)) {
+                        registerResponse.setValue(new UserResponse(R.string.username_already_exists));
+                        return;
+                    }
+                    else if(user.getEmail().equals(email)) {
+                        registerResponse.setValue(new UserResponse(R.string.email_already_exists));
+                        return;
+                    }
+                }
             }
+
+            repository.addNewUser(fullName, username, email, password, response -> {
+                if (response != null) {
+                    registerResponse.setValue(response);
+                } else {
+                    registerResponse.setValue(new UserResponse(R.string.register_failed));
+                }
+            });
+
         });
     }
 

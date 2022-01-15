@@ -1,8 +1,8 @@
-package com.example.pathway_jogging.app.register;
+package com.example.pathway_jogging.datamodel;
 
 import androidx.annotation.Nullable;
 
-public class RegisterResponse {
+public class UserResponse {
     @Nullable
     private String fullname;
     @Nullable
@@ -16,7 +16,7 @@ public class RegisterResponse {
     @Nullable
     private Integer error;
 
-    public RegisterResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password, @Nullable String id) {
+    public UserResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password, @Nullable String id) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
@@ -24,11 +24,11 @@ public class RegisterResponse {
         this.id = id;
     }
 
-    public RegisterResponse(@Nullable Integer error) {
+    public UserResponse(@Nullable Integer error) {
         this.error = error;
     }
 
-    public RegisterResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password) {
+    public UserResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;

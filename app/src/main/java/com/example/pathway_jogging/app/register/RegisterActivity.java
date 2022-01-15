@@ -1,5 +1,6 @@
 package com.example.pathway_jogging.app.register;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -78,11 +79,11 @@ public class RegisterActivity extends AppCompatActivity {
     private void initListener() {
         registerButton.setOnClickListener(v -> {
             String fullName, username, email, password, confirmPassword;
-            fullName = binding.fullname.getText().toString();
-            username = binding.username.getText().toString();
-            email = binding.email.getText().toString();
-            password = binding.password.getText().toString();
-            confirmPassword = binding.confirmPassword.getText().toString();
+            fullName = binding.fullname.getText().toString().trim();
+            username = binding.username.getText().toString().trim();
+            email = binding.email.getText().toString().trim();
+            password = binding.password.getText().toString().trim();
+            confirmPassword = binding.confirmPassword.getText().toString().trim();
 
             if (registerViewModel.validateRegisterData(fullName, username, email, password, confirmPassword)) {
                 doRegister(fullName, username, email, password);
@@ -108,6 +109,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle(R.string.text_error);
+        alertDialogBuilder.setMessage(errorString);
+        alertDialogBuilder.setCancelable(true);
+        alertDialogBuilder.setPositiveButton(R.string.text_ok, (dialog, which) -> dialog.dismiss());
+        alertDialogBuilder.create().show();
     }
 }
