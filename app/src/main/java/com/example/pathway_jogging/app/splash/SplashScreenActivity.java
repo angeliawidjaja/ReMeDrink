@@ -28,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void handleIntent() {
         Intent intent;
-        if(new UserLoginData(getApplicationContext()).getUserLoginData() != null) {
+        if(!new UserLoginData(getApplicationContext()).getUserLoginData().isEmpty()) {
             intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
         }
         else {
