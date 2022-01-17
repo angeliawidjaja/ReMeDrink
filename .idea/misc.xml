@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Angelia/#Semester 5/Mobile Programming/pathway_jogging/app/src/main/res/drawable/gray_rounded_border.xml" value="0.10104166666666667" />
         <entry key="..\:/Angelia/#Semester 5/Mobile Programming/pathway_jogging/app/src/main/res/drawable/light_blue_rounded_border.xml" value="0.24166666666666667" />
         <entry key="..\:/Angelia/#Semester 5/Mobile Programming/pathway_jogging/app/src/main/res/layout-w936dp/activity_register.xml" value="0.1" />
@@ -24,6 +25,20 @@
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/layout/activity_squat.xml" value="0.22" />
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/layout/fragment_dashboard.xml" value="0.11594202898550725" />
         <entry key="..\:/Users/monic/AndroidStudioProjects/pathway_jogging/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+=======
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/drawable/green_button_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_jogging1.xml" value="0.16" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_login.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_register.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/activity_splash_screen.xml" value="0.17346014492753623" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/fragment_notifications.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/jogging_1.xml" value="0.22" />
+        <entry key="..\:/Users/gabri/Documents/IT SEM 5/Mobile Programming/pathway_jogging/app/src/main/res/layout/register_or_login_button.xml" value="0.17980072463768115" />
+>>>>>>> c83cbfe0c87dff8c10e1969bbd2a4f40e81953f3
       </map>
     </option>
   </component>
