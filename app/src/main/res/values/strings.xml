@@ -43,5 +43,6 @@
     <string name="text_error">Error</string>
     <string name="text_ok">OK</string>
     <string name="text_welcome">Welcome</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>
