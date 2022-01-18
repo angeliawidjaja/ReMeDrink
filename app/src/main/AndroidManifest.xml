@@ -21,15 +21,6 @@
         <activity
             android:name=".SquatActivity"
             android:exported="true" />
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCIz1g2fwCZQfPHlF5uSmHJXXc97CggZp8" />
-
         <activity
             android:name=".app.register.RegisterActivity"
             android:exported="true"
