@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pathway_jogging">
 
-
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -31,11 +30,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-<<<<<<< HEAD
-            android:value="@string/google_maps_key" />
-=======
-            android:value="AIzaSyCIz1g2fwCZQfPHlF5uSmHJXXc97CggZp8"/>
->>>>>>> c83cbfe0c87dff8c10e1969bbd2a4f40e81953f3
+            android:value="AIzaSyCIz1g2fwCZQfPHlF5uSmHJXXc97CggZp8" />
 
         <activity
             android:name=".app.register.RegisterActivity"
