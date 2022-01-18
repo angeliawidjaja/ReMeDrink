@@ -23,19 +23,17 @@ public class UserLoginData {
         gson = new Gson();
     }
 
-    public ArrayList<UserResponse> getUserLoginData() {
+    public UserResponse getUserLoginData() {
         return sharedPreferences.contains(key) ?
                 gson.fromJson(
                         sharedPreferences.getString(key, ""),
-                        new TypeToken<ArrayList<UserResponse>>(){}.getType())
-                : new ArrayList<>();
+                        new TypeToken<UserResponse>(){}.getType())
+                : new UserResponse();
     }
 
     public void saveUser(UserResponse user) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        ArrayList<UserResponse> data = getUserLoginData();
-        data.add(user);
-        String json = gson.toJson(data);
+        String json = gson.toJson(user);
         editor.putString(key, json);
         editor.apply();
     }

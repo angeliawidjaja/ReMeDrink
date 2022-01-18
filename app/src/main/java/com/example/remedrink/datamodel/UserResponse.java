@@ -35,6 +35,10 @@ public class UserResponse {
         this.password = password;
     }
 
+    public UserResponse() {
+
+    }
+
     @Nullable
     public String getFullname() {
         return fullname;
