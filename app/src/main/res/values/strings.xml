@@ -45,4 +45,7 @@
     <string name="text_welcome">Welcome</string>
     <string name="edit_profile">Edit Profile</string>
 
+    <string name="number_weight">Spinner Example</string>
+
+
 </resources>
