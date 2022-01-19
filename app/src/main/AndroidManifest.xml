@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Pathway_jogging"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".app.landing.profile.EditProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".PlankActivity"
             android:exported="true" />
         <activity

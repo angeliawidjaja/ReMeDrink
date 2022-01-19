@@ -74,7 +74,7 @@
                             android:gravity="center"
                             android:text="Weight"
                             android:textColor="@color/dark_blue"
-                            android:textSize="25dp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/weight_value"
@@ -117,7 +117,7 @@
                             android:layout_marginBottom="10dp"
                             android:text="Height"
                             android:textColor="@color/dark_blue"
-                            android:textSize="25dp" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/height_value"
