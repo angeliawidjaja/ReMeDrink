@@ -18,27 +18,24 @@ public class UserResponse {
     @Nullable
     private Integer weight;
     @Nullable
+    private Integer waterIntakeIdeal;
+    @Nullable
+    private Integer waterIntakeGoal;
+    @Nullable
     private Integer error;
-
-    public UserResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password, @Nullable String id) {
-        this.fullname = fullname;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.id = id;
-    }
 
     public UserResponse(@Nullable Integer error) {
         this.error = error;
     }
 
-    public UserResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password, @Nullable Integer height, @Nullable Integer weight) {
+    public UserResponse(@Nullable String fullname, @Nullable String username, @Nullable String email, @Nullable String password, @Nullable Integer height, @Nullable Integer weight, @Nullable Integer waterIntakeGoal) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
         this.password = password;
         this.height = height;
         this.weight = weight;
+        this.waterIntakeGoal = waterIntakeGoal;
     }
 
     public UserResponse() {
@@ -107,5 +104,23 @@ public class UserResponse {
 
     public void setWeight(@Nullable Integer weight) {
         this.weight = weight;
+    }
+
+    @Nullable
+    public Integer getWaterIntakeIdeal() {
+        return waterIntakeIdeal;
+    }
+
+    public void setWaterIntakeIdeal(@Nullable Integer waterIntakeIdeal) {
+        this.waterIntakeIdeal = waterIntakeIdeal;
+    }
+
+    @Nullable
+    public Integer getWaterIntakeGoal() {
+        return waterIntakeGoal;
+    }
+
+    public void setWaterIntakeGoal(@Nullable Integer waterIntakeGoal) {
+        this.waterIntakeGoal = waterIntakeGoal;
     }
 }

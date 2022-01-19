@@ -39,7 +39,8 @@ public class RegisterViewModel extends ViewModel {
                 }
             }
 
-            repository.addNewUser(fullName, username, email, password, response -> {
+            Integer waterIntakeGoal = 2700;
+            repository.addNewUser(fullName, username, email, password, waterIntakeGoal, response -> {
                 if (response != null) {
                     registerResponse.setValue(response);
                 } else {

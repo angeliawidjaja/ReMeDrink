@@ -4,16 +4,26 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.remedrink.datamodel.user.UserResponse;
+import com.example.remedrink.repository.Repository;
+
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<UserResponse> userData;
+    private Repository repository;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        userData = new MutableLiveData<>();
+        repository = Repository.getInstance();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public MutableLiveData<UserResponse> getUserData() {
+        return userData;
+    }
+
+    public void updateUser(UserResponse user) {
+        repository.updateUser(user, response -> {
+            if(response != null) userData.setValue(user);
+        });
     }
 }

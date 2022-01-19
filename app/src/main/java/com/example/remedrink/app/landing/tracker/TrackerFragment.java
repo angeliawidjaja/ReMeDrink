@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.remedrink.databinding.FragmentTrackerBinding;
 import com.example.remedrink.datamodel.drink.MyDrinkItemResponse;
+import com.example.remedrink.datamodel.user.UserLoginData;
+import com.example.remedrink.datamodel.user.UserResponse;
 
 import java.util.List;
 
@@ -21,17 +23,25 @@ public class TrackerFragment extends Fragment {
     private TrackerViewModel trackerViewModel;
     private FragmentTrackerBinding binding;
     private HistoryDrinkAdapter adapter;
+    private UserResponse userLoginData;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         initViewModel();
+        userLoginData = new UserLoginData(requireContext()).getUserLoginData();
 
         binding = FragmentTrackerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        initComponents();
         requestTodayDrinkHistoryData();
         handleObserveDrinkHistoryDataResult();
 
         return root;
+    }
+
+    private void initComponents() {
+        binding.tvIdealWaterIntakeValue.setText(userLoginData.getWaterIntakeIdeal().toString());
+        binding.tvWaterIntakeGoalValue.setText(userLoginData.getWaterIntakeGoal().toString());
     }
 
     @SuppressLint("SetTextI18n")

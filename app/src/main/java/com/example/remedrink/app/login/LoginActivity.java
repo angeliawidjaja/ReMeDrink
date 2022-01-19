@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveUserIntoSharedPref(UserResponse user) {
+        user.setWaterIntakeIdeal(user.getWaterIntakeGoal());
         UserLoginData loginData = new UserLoginData(getApplicationContext());
         loginData.saveUser(user);
     }

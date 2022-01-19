@@ -51,8 +51,8 @@ public class Repository {
         });
     }
 
-    public void addNewUser(String fullName, String username, String email, String password, final RequestHandler<UserResponse> requestHandler) {
-        UserResponse request = new UserResponse(fullName, username, email, password, 0, 0);
+    public void addNewUser(String fullName, String username, String email, String password, Integer waterIntakeGoal, final RequestHandler<UserResponse> requestHandler) {
+        UserResponse request = new UserResponse(fullName, username, email, password, 100, 50, waterIntakeGoal);
         Log.d("<REQ>", "createUser: " + new Gson().toJson(request));
         Call<UserResponse> call = apiService.createUser(request);
         call.enqueue(new Callback<UserResponse>() {
@@ -65,6 +65,24 @@ public class Repository {
             @Override
             public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
                 Log.d("<RES>", "createUser: " + t.getMessage());
+                requestHandler.onResult(null);
+            }
+        });
+    }
+
+    public void updateUser(UserResponse currUserData, final RequestHandler<UserResponse> requestHandler) {
+        Log.d("<REQ>", "updateUser: " + new Gson().toJson(currUserData.getId()));
+        Call<UserResponse> call = apiService.updateUser(currUserData.getId(), currUserData);
+        call.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
+                Log.d("<RES>", "updateUser: " + new Gson().toJson(response.body()));
+                requestHandler.onResult(response.body());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
+                Log.d("<RES>", "updateUser: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });

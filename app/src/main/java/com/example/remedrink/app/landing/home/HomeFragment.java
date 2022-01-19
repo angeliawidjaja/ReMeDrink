@@ -50,9 +50,16 @@ public class HomeFragment extends Fragment {
         initWelcome();
         setHeightWeight();
         initListener();
+        handleUpdateData();
 
         return root;
 
+    }
+
+    private void handleUpdateData() {
+        homeViewModel.getUserData().observe(getViewLifecycleOwner(), v -> {
+            setHeightWeight();
+        });
     }
 
     private void initWelcome() {
@@ -76,28 +83,21 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
         binding.btnWeight.setOnClickListener(new View.OnClickListener() {
-            AlertDialog.Builder dialog;
-            LayoutInflater inflater;
-            View dialogView;
             TextView text;
 
             @Override
             public void onClick(View v) {
-                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                final View formsWeight = inflater.inflate(R.layout.form_weight,null, false);
+                final View formsWeight = inflater.inflate(R.layout.form_weight, null, false);
                 final NumberPicker inp_weight = (NumberPicker) formsWeight.findViewById(R.id.weight_num_pick);
 
                 text = formsWeight.findViewById(R.id.text);
                 NumberPicker np = formsWeight.findViewById(R.id.weight_num_pick);
                 np.setMinValue(0);
                 np.setMaxValue(500);
-                np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-                    @Override
-                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                        text.setText("Weight: " + newVal + "Kg");
-                    }
-                });
+                np.setValue(userLoginData.getWeight());
+                np.setOnValueChangedListener((picker, oldVal, newVal) -> text.setText("Weight: " + newVal + "Kg"));
 
                 new AlertDialog.Builder(getActivity())
                         .setView(formsWeight)
@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
                                     String weight = "Weight Update: " + inp_weight.getValue() + "Kg";
                                     Toast.makeText(getActivity(), weight, Toast.LENGTH_SHORT).show();
                                     userLoginData.setWeight(inp_weight.getValue());
-                                    setHeightWeight();
+                                    homeViewModel.updateUser(userLoginData);
                                     dialog.cancel();
                                 })
                         .setNegativeButton("CANCEL",
@@ -114,24 +114,21 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        height
         binding.btnHeight.setOnClickListener(new View.OnClickListener() {
-            AlertDialog.Builder dialog;
-            LayoutInflater inflater;
-            View dialogView;
             TextView text;
 
             @Override
             public void onClick(View v) {
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                final View formsHeight = inflater.inflate(R.layout.form_height,null, false);
+                final View formsHeight = inflater.inflate(R.layout.form_height, null, false);
                 final NumberPicker inp_height = (NumberPicker) formsHeight.findViewById(R.id.height_num_pick);
 
                 text = formsHeight.findViewById(R.id.text);
                 NumberPicker np = formsHeight.findViewById(R.id.height_num_pick);
                 np.setMinValue(50);
                 np.setMaxValue(500);
+                np.setValue(userLoginData.getHeight());
                 np.setOnValueChangedListener((picker, oldVal, newVal) -> text.setText("Height: " + newVal + "cm"));
 
                 new AlertDialog.Builder(getActivity())
@@ -141,7 +138,7 @@ public class HomeFragment extends Fragment {
                                     String height = "Height Update: " + inp_height.getValue() + "cm";
                                     Toast.makeText(getActivity(), height, Toast.LENGTH_SHORT).show();
                                     userLoginData.setHeight(inp_height.getValue());
-                                    setHeightWeight();
+                                    homeViewModel.updateUser(userLoginData);
                                     dialog.cancel();
                                 })
                         .setNegativeButton("CANCEL",
