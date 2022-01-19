@@ -16,22 +16,31 @@ public class TrackerFragment extends Fragment {
     private TrackerViewModel trackerViewModel;
     private FragmentTrackerBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        trackerViewModel =
-                new ViewModelProvider(this).get(TrackerViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initViewModel();
 
         binding = FragmentTrackerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        final TextView textView = binding.textDashboard;
-//        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
+        requestDrinkHistoryData();
+        handleObserveDrinkHistoryDataResult();
+
         return root;
+    }
+
+    private void handleObserveDrinkHistoryDataResult() {
+        trackerViewModel.getMyDrinkListResponse().observe(getViewLifecycleOwner(), listDrink -> {
+            if(listDrink.isEmpty()) return;
+        });
+    }
+
+    private void requestDrinkHistoryData() {
+        trackerViewModel.getMyDrinkHistoryList();
+    }
+
+    private void initViewModel() {
+        trackerViewModel = new ViewModelProvider(this, new TrackerViewModelFactory(getContext()))
+                .get(TrackerViewModel.class);
     }
 
     @Override

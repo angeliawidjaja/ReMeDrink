@@ -26,26 +26,37 @@ import com.example.remedrink.R;
 import com.example.remedrink.SquatActivity;
 import com.example.remedrink.app.landing.HomeActivity;
 import com.example.remedrink.databinding.FragmentHomeBinding;
+import com.example.remedrink.datamodel.user.UserLoginData;
+import com.example.remedrink.datamodel.user.UserResponse;
+
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private UserResponse userLoginData;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        userLoginData = new UserLoginData(requireContext()).getUserLoginData();
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        setHeightWeight();
         initListener();
 
         return root;
 
+    }
+
+    private void setHeightWeight() {
+        binding.weightValue.setText(userLoginData.getWeight() + " kg");
+        binding.heightValue.setText(userLoginData.getHeight() + " cm");
     }
 
     private void initListener() {
@@ -58,9 +69,6 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(getActivity(), PlankActivity.class);
             startActivity(intent);
         });
-
-//        weight
-
         binding.btnWeight.setOnClickListener(new View.OnClickListener() {
             AlertDialog.Builder dialog;
             LayoutInflater inflater;
@@ -88,23 +96,15 @@ public class HomeFragment extends Fragment {
                 new AlertDialog.Builder(getActivity())
                         .setView(formsWeight)
                         .setPositiveButton("SET",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(
-                                            DialogInterface dialog, int id) {
-                                        String weight = "Weight Update: " + inp_weight.getValue() + "Kg";
-                                        Toast.makeText(getActivity(), weight, Toast.LENGTH_SHORT).show();
-                                        dialog.cancel();
-                                    }
+                                (dialog, id) -> {
+                                    String weight = "Weight Update: " + inp_weight.getValue() + "Kg";
+                                    Toast.makeText(getActivity(), weight, Toast.LENGTH_SHORT).show();
+                                    userLoginData.setWeight(inp_weight.getValue());
+                                    setHeightWeight();
+                                    dialog.cancel();
                                 })
                         .setNegativeButton("CANCEL",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(
-                                            DialogInterface dialog, int id) {
-                                        dialog.dismiss();
-                                    }
-                        }).show();
+                                (dialog, id) -> dialog.dismiss()).show();
             }
         });
 
@@ -124,35 +124,22 @@ public class HomeFragment extends Fragment {
 
                 text = formsHeight.findViewById(R.id.text);
                 NumberPicker np = formsHeight.findViewById(R.id.height_num_pick);
-                np.setMinValue(0);
+                np.setMinValue(50);
                 np.setMaxValue(500);
-                np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-                    @Override
-                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                        text.setText("Height: " + newVal + "cm");
-                    }
-                });
+                np.setOnValueChangedListener((picker, oldVal, newVal) -> text.setText("Height: " + newVal + "cm"));
 
                 new AlertDialog.Builder(getActivity())
                         .setView(formsHeight)
                         .setPositiveButton("SET",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(
-                                            DialogInterface dialog, int id) {
-                                        String height = "Height Update: " + inp_height.getValue() + "cm";
-                                        Toast.makeText(getActivity(), height, Toast.LENGTH_SHORT).show();
-                                        dialog.cancel();
-                                    }
+                                (dialog, id) -> {
+                                    String height = "Height Update: " + inp_height.getValue() + "cm";
+                                    Toast.makeText(getActivity(), height, Toast.LENGTH_SHORT).show();
+                                    userLoginData.setHeight(inp_height.getValue());
+                                    setHeightWeight();
+                                    dialog.cancel();
                                 })
                         .setNegativeButton("CANCEL",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(
-                                            DialogInterface dialog, int id) {
-                                        dialog.dismiss();
-                                    }
-                                }).show();
+                                (dialog, id) -> dialog.dismiss()).show();
             }
         });
 

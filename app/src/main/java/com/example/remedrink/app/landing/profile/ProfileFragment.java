@@ -9,16 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.remedrink.R;
 import com.example.remedrink.app.splash.SplashScreenActivity;
 import com.example.remedrink.databinding.FragmentProfileBinding;
-import com.example.remedrink.datamodel.UserLoginData;
-import com.example.remedrink.datamodel.UserResponse;
+import com.example.remedrink.datamodel.user.UserLoginData;
+import com.example.remedrink.datamodel.user.UserResponse;
 
 //import com.example.remedrink.databinding.ActivityLogoutBinding;
 
