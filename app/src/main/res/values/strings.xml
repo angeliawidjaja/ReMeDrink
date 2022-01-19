@@ -54,5 +54,6 @@
     <string name="waterVolWeek">xxx</string>
     <string name="totDrinkWeek">xxx</string>
     <string name="history">History</string>
+    <string name="logout">LOGOUT</string>
 
 </resources>
