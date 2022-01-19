@@ -21,7 +21,7 @@ public interface ApiService {
     @GET("users/")
     Call<List<UserResponse>> getUserList();
 
-    @GET("drink/{id}")
+    @GET("users/{id}/drink")
     Call<List<MyDrinkItemResponse>> getMyDrinkHistory(@Path("id") String id);
 
 //    @GET("users/{id}")
