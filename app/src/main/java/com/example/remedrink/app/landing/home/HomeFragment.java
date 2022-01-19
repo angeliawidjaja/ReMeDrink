@@ -47,11 +47,17 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        initWelcome();
         setHeightWeight();
         initListener();
 
         return root;
 
+    }
+
+    private void initWelcome() {
+        String welcome = "Hi " + userLoginData.getFullname() + "!";
+        binding.textHome.setText(welcome);
     }
 
     private void setHeightWeight() {

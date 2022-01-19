@@ -15,5 +15,11 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initListener();
+    }
+
+    private void initListener() {
+
     }
 }
