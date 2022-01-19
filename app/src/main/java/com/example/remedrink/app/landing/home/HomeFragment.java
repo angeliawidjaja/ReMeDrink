@@ -70,9 +70,6 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
         binding.btnWeight.setOnClickListener(new View.OnClickListener() {
-            AlertDialog.Builder dialog;
-            LayoutInflater inflater;
-            View dialogView;
             TextView text;
 
             @Override
@@ -110,9 +107,6 @@ public class HomeFragment extends Fragment {
 
 //        height
         binding.btnHeight.setOnClickListener(new View.OnClickListener() {
-            AlertDialog.Builder dialog;
-            LayoutInflater inflater;
-            View dialogView;
             TextView text;
 
             @Override
@@ -125,7 +119,7 @@ public class HomeFragment extends Fragment {
                 text = formsHeight.findViewById(R.id.text);
                 NumberPicker np = formsHeight.findViewById(R.id.height_num_pick);
                 np.setMinValue(50);
-                np.setMaxValue(500);
+                np.setMaxValue(300);
                 np.setOnValueChangedListener((picker, oldVal, newVal) -> text.setText("Height: " + newVal + "cm"));
 
                 new AlertDialog.Builder(getActivity())
