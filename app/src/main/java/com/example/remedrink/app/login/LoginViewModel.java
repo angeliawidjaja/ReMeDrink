@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.remedrink.R;
-import com.example.remedrink.datamodel.UserResponse;
+import com.example.remedrink.datamodel.user.UserResponse;
 import com.example.remedrink.repository.Repository;
 
 public class LoginViewModel extends ViewModel {

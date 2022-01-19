@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import android.util.Patterns;
 
 import com.example.remedrink.R;
-import com.example.remedrink.datamodel.UserResponse;
+import com.example.remedrink.datamodel.user.UserResponse;
 import com.example.remedrink.repository.Repository;
 
 public class RegisterViewModel extends ViewModel {

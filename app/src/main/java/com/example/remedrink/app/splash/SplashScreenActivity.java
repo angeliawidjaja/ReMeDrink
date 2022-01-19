@@ -10,7 +10,7 @@ import android.os.Looper;
 import com.example.remedrink.R;
 import com.example.remedrink.app.landing.HomeActivity;
 import com.example.remedrink.app.login.LoginActivity;
-import com.example.remedrink.datamodel.UserLoginData;
+import com.example.remedrink.datamodel.user.UserLoginData;
 
 import java.util.Objects;
 

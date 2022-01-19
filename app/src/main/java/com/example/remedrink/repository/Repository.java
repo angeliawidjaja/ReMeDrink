@@ -4,7 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.remedrink.datamodel.UserResponse;
+import com.example.remedrink.datamodel.drink.MyDrinkItemResponse;
+import com.example.remedrink.datamodel.user.UserResponse;
 import com.example.remedrink.retrofit.ApiClient;
 import com.example.remedrink.retrofit.ApiService;
 import com.google.gson.Gson;
@@ -51,7 +52,7 @@ public class Repository {
     }
 
     public void addNewUser(String fullName, String username, String email, String password, final RequestHandler<UserResponse> requestHandler) {
-        UserResponse request = new UserResponse(fullName, username, email, password);
+        UserResponse request = new UserResponse(fullName, username, email, password, 0, 0);
         Log.d("<REQ>", "createUser: " + new Gson().toJson(request));
         Call<UserResponse> call = apiService.createUser(request);
         call.enqueue(new Callback<UserResponse>() {
@@ -64,6 +65,24 @@ public class Repository {
             @Override
             public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
                 Log.d("<RES>", "createUser: " + t.getMessage());
+                requestHandler.onResult(null);
+            }
+        });
+    }
+
+    public void getMyDrinkHistory(String userId, final RequestHandler<List<MyDrinkItemResponse>> requestHandler) {
+        Log.d("<REQ>", "getMyDrinkHistory: " + new Gson().toJson(userId));
+        Call<List<MyDrinkItemResponse>> call = apiService.getMyDrinkHistory(userId);
+        call.enqueue(new Callback<List<MyDrinkItemResponse>>() {
+            @Override
+            public void onResponse(Call<List<MyDrinkItemResponse>> call, Response<List<MyDrinkItemResponse>> response) {
+                Log.d("<RES>", "getMyDrinkHistory: " + new Gson().toJson(response.body()));
+                requestHandler.onResult(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<MyDrinkItemResponse>> call, Throwable t) {
+                Log.d("<RES>", "getMyDrinkHistory: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });

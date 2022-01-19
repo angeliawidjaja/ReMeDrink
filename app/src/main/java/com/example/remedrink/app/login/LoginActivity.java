@@ -16,8 +16,8 @@ import com.example.remedrink.R;
 import com.example.remedrink.app.landing.HomeActivity;
 import com.example.remedrink.app.register.RegisterActivity;
 import com.example.remedrink.databinding.ActivityLoginBinding;
-import com.example.remedrink.datamodel.UserLoginData;
-import com.example.remedrink.datamodel.UserResponse;
+import com.example.remedrink.datamodel.user.UserLoginData;
+import com.example.remedrink.datamodel.user.UserResponse;
 
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;

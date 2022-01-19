@@ -1,12 +1,11 @@
-package com.example.remedrink.datamodel;
+package com.example.remedrink.datamodel.user;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.remedrink.datamodel.Constant;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import java.util.ArrayList;
 
 /**
  * Created by Angelia Widjaja on 15-Jan-22 10:40.
