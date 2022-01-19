@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:text="Hi Nama!"
                 android:textSize="28sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="15dp"
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:text="Maintain Your Body"
                     android:textSize="12pt"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
 
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:text="Get In Shape"
                     android:textSize="12pt"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
 
