@@ -84,4 +84,28 @@ public class UserResponse {
     public Integer getWeight() {
         return weight;
     }
+
+    public void setFullname(@Nullable String fullname) {
+        this.fullname = fullname;
+    }
+
+    public void setUsername(@Nullable String username) {
+        this.username = username;
+    }
+
+    public void setEmail(@Nullable String email) {
+        this.email = email;
+    }
+
+    public void setPassword(@Nullable String password) {
+        this.password = password;
+    }
+
+    public void setHeight(@Nullable Integer height) {
+        this.height = height;
+    }
+
+    public void setWeight(@Nullable Integer weight) {
+        this.weight = weight;
+    }
 }
