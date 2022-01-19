@@ -44,5 +44,15 @@
     <string name="text_ok">OK</string>
     <string name="text_welcome">Welcome</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="today">Today</string>
+    <string name="water_volume">Water Volume</string>
+    <string name="total_drink">Total Drink</string>
+    <string name="this_week">This Week</string>
+    <string name="waterVolDay">xxx</string>
+    <string name="totDrinkDay">xxx</string>
+    <string name="waterVolWeek">xxx</string>
+    <string name="totDrinkWeek">xxx</string>
+    <string name="history">History</string>
 
 </resources>
