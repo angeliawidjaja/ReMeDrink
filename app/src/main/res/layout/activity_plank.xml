@@ -8,162 +8,171 @@
     android:background="@color/light_blue"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-        <TextView
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Plank Exercise"
-            android:textSize="30sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="206dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/plank1"
-                android:layout_gravity="center"
-                />
-            <ImageView
-                android:layout_width="206dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/plank2"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center|top"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:background="@drawable/green_rounded_border"
-            android:text="Tip!"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="20sp"
-            />s
-        <TextView
-            android:layout_width="360dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            android:text="Make sure your hips aren’t drooping toward the floor or hicked up toward the ceiling. Don’t lock your elbows."
-            android:textSize="20sp"
-            android:gravity="center|top"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:gravity="center|top"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="370dp"
-            android:layout_height="40dp"
-            android:text="How to Squat:"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:layout_width="65dp"
-                android:layout_height="30dp"
-                android:text="Step 1: "
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Position your elbows directly beneath your shoulders"
-                android:textSize="18sp"/>
-        </LinearLayout>
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Plank Exercise"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="20dp"
+                    />
 
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:layout_width="66dp"
-                android:layout_height="30dp"
-                android:text="Step 2: "
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="206dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/plank1"
+                        android:layout_gravity="center"
+                        />
+                    <ImageView
+                        android:layout_width="206dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/plank2"
+                        android:layout_gravity="center"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Make and maintain a straight body line from head to heels"
-                android:textSize="18sp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:layout_width="65dp"
-                android:layout_height="30dp"
-                android:text="Step 3: "
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center|top"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/green_rounded_border"
+                    android:text="Tip!"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    />s
+                <TextView
+                    android:layout_width="360dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Make sure your hips aren’t drooping toward the floor or hicked up toward the ceiling. Don’t lock your elbows."
+                    android:textSize="20sp"
+                    android:gravity="center|top"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Squeeze your butt and the fronts of your thighs"
-                android:textSize="18sp"/>
+                android:layout_height="300dp"
+                android:gravity="center|top"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="370dp"
+                    android:layout_height="40dp"
+                    android:text="How to Squat:"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+                    <TextView
+                        android:layout_width="65dp"
+                        android:layout_height="30dp"
+                        android:text="Step 1: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Position your elbows directly beneath your shoulders"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+                    <TextView
+                        android:layout_width="66dp"
+                        android:layout_height="30dp"
+                        android:text="Step 2: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Make and maintain a straight body line from head to heels"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+                    <TextView
+                        android:layout_width="65dp"
+                        android:layout_height="30dp"
+                        android:text="Step 3: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Squeeze your butt and the fronts of your thighs"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+                    <TextView
+                        android:layout_width="65dp"
+                        android:layout_height="30dp"
+                        android:text="Step 4: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Brace your abs like you’re going to take a punch"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="65dp"
+                        android:layout_height="30dp"
+                        android:text="Step 5: "
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Advance the exercise"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:layout_width="65dp"
-                android:layout_height="30dp"
-                android:text="Step 4: "
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Brace your abs like you’re going to take a punch"
-                android:textSize="18sp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="370dp"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="65dp"
-                android:layout_height="30dp"
-                android:text="Step 5: "
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Advance the exercise"
-                android:textSize="18sp"/>
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -59,40 +59,7 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
-//        binding.btnWeight.setOnClickListener(new View.OnClickListener() {
-//            AlertDialog.Builder dialog;
-//            LayoutInflater inflater;
-//            View dialogView;
-//
-//            @Override
-//            public void onClick(View v) {
-//                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//
-//                final View formsWeight = inflater.inflate(R.layout.form_weight,null, false);
-//                final EditText inp_weight = (EditText) formsWeight.findViewById(R.id.inp_weight);
-//
-//                new AlertDialog.Builder(getActivity())
-//                        .setView(formsWeight)
-//                        .setPositiveButton("SET",
-//                                new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(
-//                                            DialogInterface dialog, int id) {
-//                                        String weight = "Weight : " + inp_weight.getText();
-//                                        Toast.makeText(getActivity(), weight, Toast.LENGTH_SHORT).show();
-//                                        dialog.cancel();
-//                                    }
-//                                })
-//                        .setNegativeButton("CANCEL",
-//                                new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(
-//                                            DialogInterface dialog, int id) {
-//                                        dialog.dismiss();
-//                                    }
-//                        }).show();
-//            }
-//        });
+//        weight
 
         binding.btnWeight.setOnClickListener(new View.OnClickListener() {
             AlertDialog.Builder dialog;
@@ -138,6 +105,54 @@ public class HomeFragment extends Fragment {
                                         dialog.dismiss();
                                     }
                         }).show();
+            }
+        });
+
+//        height
+        binding.btnHeight.setOnClickListener(new View.OnClickListener() {
+            AlertDialog.Builder dialog;
+            LayoutInflater inflater;
+            View dialogView;
+            TextView text;
+
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                final View formsHeight = inflater.inflate(R.layout.form_height,null, false);
+                final NumberPicker inp_height = (NumberPicker) formsHeight.findViewById(R.id.height_num_pick);
+
+                text = formsHeight.findViewById(R.id.text);
+                NumberPicker np = formsHeight.findViewById(R.id.height_num_pick);
+                np.setMinValue(0);
+                np.setMaxValue(500);
+                np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        text.setText("Height: " + newVal + "cm");
+                    }
+                });
+
+                new AlertDialog.Builder(getActivity())
+                        .setView(formsHeight)
+                        .setPositiveButton("SET",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(
+                                            DialogInterface dialog, int id) {
+                                        String height = "Height Update: " + inp_height.getValue() + "cm";
+                                        Toast.makeText(getActivity(), height, Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
+                                })
+                        .setNegativeButton("CANCEL",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(
+                                            DialogInterface dialog, int id) {
+                                        dialog.dismiss();
+                                    }
+                                }).show();
             }
         });
 

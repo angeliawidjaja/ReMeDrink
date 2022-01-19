@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="FILL YOUR WEIGHT:"
+            android:text="FILL YOUR HEIGHT:"
             android:textSize="20sp"
             android:gravity="center"
             android:textColor="@color/white"
@@ -26,7 +26,7 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
         <NumberPicker
-            android:id="@+id/weight_num_pick"
+            android:id="@+id/height_num_pick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Weight: 0Kg"
+            android:text="Height: 0cm"
             android:textSize="20sp"/>
 
     </LinearLayout>
