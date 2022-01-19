@@ -59,17 +59,64 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
+//        binding.btnWeight.setOnClickListener(new View.OnClickListener() {
+//            AlertDialog.Builder dialog;
+//            LayoutInflater inflater;
+//            View dialogView;
+//
+//            @Override
+//            public void onClick(View v) {
+//                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//                final View formsWeight = inflater.inflate(R.layout.form_weight,null, false);
+//                final EditText inp_weight = (EditText) formsWeight.findViewById(R.id.inp_weight);
+//
+//                new AlertDialog.Builder(getActivity())
+//                        .setView(formsWeight)
+//                        .setPositiveButton("SET",
+//                                new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(
+//                                            DialogInterface dialog, int id) {
+//                                        String weight = "Weight : " + inp_weight.getText();
+//                                        Toast.makeText(getActivity(), weight, Toast.LENGTH_SHORT).show();
+//                                        dialog.cancel();
+//                                    }
+//                                })
+//                        .setNegativeButton("CANCEL",
+//                                new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(
+//                                            DialogInterface dialog, int id) {
+//                                        dialog.dismiss();
+//                                    }
+//                        }).show();
+//            }
+//        });
+
         binding.btnWeight.setOnClickListener(new View.OnClickListener() {
             AlertDialog.Builder dialog;
             LayoutInflater inflater;
             View dialogView;
+            TextView text;
 
             @Override
             public void onClick(View v) {
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
                 final View formsWeight = inflater.inflate(R.layout.form_weight,null, false);
-                final EditText inp_weight = (EditText) formsWeight.findViewById(R.id.inp_weight);
+                final NumberPicker inp_weight = (NumberPicker) formsWeight.findViewById(R.id.weight_num_pick);
+
+                text = formsWeight.findViewById(R.id.text);
+                NumberPicker np = formsWeight.findViewById(R.id.weight_num_pick);
+                np.setMinValue(0);
+                np.setMaxValue(500);
+                np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+                    @Override
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                        text.setText("Weight: " + newVal + "Kg");
+                    }
+                });
 
                 new AlertDialog.Builder(getActivity())
                         .setView(formsWeight)
@@ -78,7 +125,7 @@ public class HomeFragment extends Fragment {
                                     @Override
                                     public void onClick(
                                             DialogInterface dialog, int id) {
-                                        String weight = "Weight : " + inp_weight.getText();
+                                        String weight = "Weight Update: " + inp_weight.getValue() + "Kg";
                                         Toast.makeText(getActivity(), weight, Toast.LENGTH_SHORT).show();
                                         dialog.cancel();
                                     }

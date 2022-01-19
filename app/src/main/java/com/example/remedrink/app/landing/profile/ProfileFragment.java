@@ -20,14 +20,14 @@ import com.example.remedrink.databinding.FragmentProfileBinding;
 import com.example.remedrink.datamodel.UserLoginData;
 import com.example.remedrink.datamodel.UserResponse;
 
-import com.example.remedrink.databinding.ActivityLogoutBinding;
+//import com.example.remedrink.databinding.ActivityLogoutBinding;
 
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel profileViewModel;
     private FragmentProfileBinding binding;
     private UserResponse userLoginData;
-    private ActivityLogoutBinding binding;
+//    private ActivityLogoutBinding binding;
     private Button btn_logout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,14 +57,14 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLogoutBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+//        binding = ActivityLogoutBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
 
-        btn_logout = findViewById(R.id.btn_logout);
+//        btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileFragment.this, SplashScreenActivity.class));
+//                startActivity(new Intent(ProfileFragment.this, SplashScreenActivity.class));
             }
         });
     }
