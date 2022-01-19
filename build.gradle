@@ -12,6 +12,13 @@ buildscript {
     }
 }
 
+//allprojects{
+//    repositories {
+//        jcenter()
+//        naven {url 'https://jitpack.io'}
+//    }
+//}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
