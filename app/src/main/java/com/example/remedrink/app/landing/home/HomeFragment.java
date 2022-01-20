@@ -94,6 +94,7 @@ public class HomeFragment extends Fragment {
                 final NumberPicker inp_weight = (NumberPicker) formsWeight.findViewById(R.id.weight_num_pick);
 
                 text = formsWeight.findViewById(R.id.text);
+                text.setText("Weight: " + userLoginData.getWeight() + "Kg");
                 NumberPicker np = formsWeight.findViewById(R.id.weight_num_pick);
                 np.setMinValue(0);
                 np.setMaxValue(300);
@@ -126,6 +127,7 @@ public class HomeFragment extends Fragment {
                 final NumberPicker inp_height = (NumberPicker) formsHeight.findViewById(R.id.height_num_pick);
 
                 text = formsHeight.findViewById(R.id.text);
+                text.setText("Height: " + userLoginData.getHeight() + "cm");
                 NumberPicker np = formsHeight.findViewById(R.id.height_num_pick);
                 np.setMinValue(50);
                 np.setMaxValue(300);
