@@ -105,4 +105,22 @@ public class Repository {
             }
         });
     }
+
+    public void addNewDrink(String userId, MyDrinkItemResponse drink, final RequestHandler<MyDrinkItemResponse> requestHandler) {
+        Log.d("<REQ>", "addNewDrink: " + new Gson().toJson(userId));
+        Call<MyDrinkItemResponse> call = apiService.addNewDrink(userId, drink);
+        call.enqueue(new Callback<MyDrinkItemResponse>() {
+            @Override
+            public void onResponse(Call<MyDrinkItemResponse> call, Response<MyDrinkItemResponse> response) {
+                Log.d("<RES>", "addNewDrink: " + new Gson().toJson(response.body()));
+                requestHandler.onResult(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<MyDrinkItemResponse> call, Throwable t) {
+                Log.d("<RES>", "getMyDrinkHistory: " + t.getMessage());
+                requestHandler.onResult(null);
+            }
+        });
+    }
 }

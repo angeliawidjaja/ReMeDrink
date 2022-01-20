@@ -14,6 +14,8 @@ import com.example.remedrink.repository.Repository;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -48,10 +50,25 @@ public class TrackerViewModel extends ViewModel {
                         finalData.add(res);
                     }
                 }
+                Collections.sort(finalData, new Comparator<MyDrinkItemResponse>() {
+                    public int compare(MyDrinkItemResponse o1, MyDrinkItemResponse o2) {
+                        if (o1.getOriCreatedAt() == null || o2.getOriCreatedAt() == null)
+                            return 0;
+                        return o2.getOriCreatedAt().compareTo(o1.getOriCreatedAt());
+                    }
+                });
                 myDrinkListResponse.setValue(new DrinkModel(totalWaterIntake, finalData));
             }
             else
                 myDrinkListResponse.setValue(new DrinkModel(0, new ArrayList<>()));
+        });
+    }
+
+    public void addNewDrink(MyDrinkItemResponse drink) {
+        repository.addNewDrink(userLoginData.getId(), drink, response -> {
+            if(response != null) {
+                getTodayDrinkHistoryList();
+            }
         });
     }
 }

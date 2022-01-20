@@ -23,13 +23,13 @@ public interface ApiService {
     @GET("users/")
     Call<List<UserResponse>> getUserList();
 
-    @GET("users/{id}/drink")
-    Call<List<MyDrinkItemResponse>> getMyDrinkHistory(@Path("id") String id);
-
     @Headers({"Content-Type: application/json"})
     @PUT("users/{id}")
     Call<UserResponse> updateUser(@Path("id") String id, @Body UserResponse body);
 
-//    @GET("users/{id}")
-//    Call<UserListDetailResponse> getUserDetail(@Path("id") int id);
+    @GET("users/{id}/drink")
+    Call<List<MyDrinkItemResponse>> getMyDrinkHistory(@Path("id") String id);
+
+    @POST("users/{id}/drink")
+    Call<MyDrinkItemResponse> addNewDrink(@Path("id") String id, @Body MyDrinkItemResponse drink);
 }

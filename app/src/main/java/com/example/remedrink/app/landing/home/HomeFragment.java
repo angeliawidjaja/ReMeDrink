@@ -57,8 +57,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void handleUpdateData() {
-        homeViewModel.getUserData().observe(getViewLifecycleOwner(), v -> {
+        homeViewModel.getUserData().observe(getViewLifecycleOwner(), userResponse -> {
             setHeightWeight();
+            new UserLoginData(requireContext()).saveUser(userResponse);
         });
     }
 
@@ -95,7 +96,7 @@ public class HomeFragment extends Fragment {
                 text = formsWeight.findViewById(R.id.text);
                 NumberPicker np = formsWeight.findViewById(R.id.weight_num_pick);
                 np.setMinValue(0);
-                np.setMaxValue(500);
+                np.setMaxValue(300);
                 np.setValue(userLoginData.getWeight());
                 np.setOnValueChangedListener((picker, oldVal, newVal) -> text.setText("Weight: " + newVal + "Kg"));
 
@@ -127,7 +128,7 @@ public class HomeFragment extends Fragment {
                 text = formsHeight.findViewById(R.id.text);
                 NumberPicker np = formsHeight.findViewById(R.id.height_num_pick);
                 np.setMinValue(50);
-                np.setMaxValue(500);
+                np.setMaxValue(300);
                 np.setValue(userLoginData.getHeight());
                 np.setOnValueChangedListener((picker, oldVal, newVal) -> text.setText("Height: " + newVal + "cm"));
 

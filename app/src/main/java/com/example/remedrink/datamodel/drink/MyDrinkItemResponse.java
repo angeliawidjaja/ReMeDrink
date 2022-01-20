@@ -14,6 +14,12 @@ public class MyDrinkItemResponse {
     private Integer drinkSize;
     private String id;
 
+    public MyDrinkItemResponse(Date createdAt, String drinkSizeType, Integer drinkSize) {
+        this.createdAt = createdAt;
+        this.drinkSizeType = drinkSizeType;
+        this.drinkSize = drinkSize;
+    }
+
     @SuppressLint("SimpleDateFormat")
     public String getCreatedAt() {
         return new SimpleDateFormat("dd MMM yyyy, hh:mm a").format(createdAt);

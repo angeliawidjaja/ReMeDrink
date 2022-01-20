@@ -22,8 +22,15 @@ public class HomeViewModel extends ViewModel {
     }
 
     public void updateUser(UserResponse user) {
+        Integer waterIntakeGoal = calculateWaterIntakeGoal(user.getWeight());
+        user.setWaterIntakeGoal(waterIntakeGoal);
+        user.setWaterIntakeIdeal(waterIntakeGoal);
         repository.updateUser(user, response -> {
             if(response != null) userData.setValue(user);
         });
+    }
+
+    private Integer calculateWaterIntakeGoal(Integer weight) {
+        return Double.valueOf(weight * 0.033 * 1000).intValue();
     }
 }
