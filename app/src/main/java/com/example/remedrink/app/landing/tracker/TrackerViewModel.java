@@ -50,12 +50,10 @@ public class TrackerViewModel extends ViewModel {
                         finalData.add(res);
                     }
                 }
-                Collections.sort(finalData, new Comparator<MyDrinkItemResponse>() {
-                    public int compare(MyDrinkItemResponse o1, MyDrinkItemResponse o2) {
-                        if (o1.getOriCreatedAt() == null || o2.getOriCreatedAt() == null)
-                            return 0;
-                        return o2.getOriCreatedAt().compareTo(o1.getOriCreatedAt());
-                    }
+                Collections.sort(finalData, (o1, o2) -> {
+                    if (o1.getOriCreatedAt() == null || o2.getOriCreatedAt() == null)
+                        return 0;
+                    return o2.getOriCreatedAt().compareTo(o1.getOriCreatedAt());
                 });
                 myDrinkListResponse.setValue(new DrinkModel(totalWaterIntake, finalData));
             }
