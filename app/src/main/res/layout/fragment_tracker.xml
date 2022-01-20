@@ -182,6 +182,7 @@
                         android:id="@+id/iv_add_drink_reminder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:src="@drawable/ic_add_reminder"
                         app:layout_constraintEnd_toStartOf="@id/iv_add_water_intake"
                         app:layout_constraintStart_toStartOf="parent"
@@ -201,6 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_cancel_reminder"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_add_water_intake"
                         app:layout_constraintTop_toBottomOf="@+id/rl_progress" />
