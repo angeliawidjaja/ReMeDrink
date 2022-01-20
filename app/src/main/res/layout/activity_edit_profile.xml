@@ -3,186 +3,178 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:background="@color/light_blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.landing.profile.EditProfileActivity">
+    android:background="@color/light_blue"
+    tools:context=".app.landing.profile.editprofile.EditProfileActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="155dp">
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="361dp"
-        android:layout_height="675dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp"
-        app:cardCornerRadius="10dp">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <!--Username-->
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_image"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="30dp"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/profile"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/username"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:layout_below="@+id/cl_image"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp"
+                android:elevation="12dp"
+                app:cardCornerRadius="12dp">
 
-            <EditText
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/prompt_username"
-                android:inputType="text"
-                android:selectAllOnFocus="true"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <!--Full Name-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/fullname"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/fullname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="12dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
-                android:hint="@string/prompt_fullname"
-                android:inputType="textPersonName"
-                android:selectAllOnFocus="true"
-                tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TouchTargetSizeCheck" />
-
-            <!--Gender-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/gender"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="12dp"
-                >
-                <RadioButton
-                    android:id="@+id/radioMale"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:checked="true"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    android:text="@string/male"
-                    />
-                <RadioButton
-                    android:id="@+id/radioFemale"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:checked="false"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    android:text="@string/female"
-                    />
-            </RadioGroup>
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-            <!--Age-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/age"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                    <!--Username-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/username"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
-            <!--Change Password-->
-            <EditText
-                android:id="@+id/age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/prompt_age"
-                android:inputType="number"
-                android:selectAllOnFocus="true"
-                tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/prompt_username"
+                        android:inputType="text"
+                        android:selectAllOnFocus="true"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/change_password"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                    <!--Full Name-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/fullname"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/prompt_password"
-                android:inputType="textPassword"
-                android:selectAllOnFocus="true"
-                tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="12dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+                        android:hint="@string/prompt_fullname"
+                        android:inputType="textPersonName"
+                        android:selectAllOnFocus="true"
+                        tools:ignore="TextContrastCheck,TextContrastCheck,TextContrastCheck,TouchTargetSizeCheck" />
 
-            <Button
-                android:id="@+id/btn_above"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
-                android:layout_marginStart="85dp"
-                android:layout_marginEnd="85dp"
-                android:text="@string/confirm_edit"
-                android:backgroundTint="@color/blue"
-                android:textColor="@color/white" />
+                    <!-- Email -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:text="@string/email"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@color/gray"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="8dp"
+                        android:text="email@test.com"
+                        android:textSize="16sp" />
+
+                    <!-- Change Password -->
+                    <TextView
+                        android:id="@+id/tv_change_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/change_password"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/new_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/prompt_password"
+                        android:inputType="textPassword"
+                        android:selectAllOnFocus="true"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <!-- Change Password -->
+                    <TextView
+                        android:id="@+id/tv_old_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/old_password"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/old_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/prompt_password"
+                        android:inputType="textPassword"
+                        android:selectAllOnFocus="true"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/btn_edit_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="85dp"
+                        android:backgroundTint="@color/blue"
+                        android:text="@string/confirm_edit"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

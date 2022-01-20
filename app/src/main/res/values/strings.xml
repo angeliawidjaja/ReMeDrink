@@ -12,7 +12,7 @@
 
     <string name="fullname">Full Name</string>
     <string name="prompt_fullname">Enter your full name</string>
-    <string name="invalid_fullname">Full name must be >3 alphanumeric characters</string>
+    <string name="invalid_fullname">Full name must be >3 alphabet characters</string>
 
     <string name="username">Username</string>
     <string name="prompt_username">Enter a username</string>
@@ -39,6 +39,8 @@
     <string name="username_already_exists">Username already exists. Please try another username.</string>
     <string name="email_already_exists">The email has been registered.</string>
     <string name="invalid_email_or_password">Invalid Email or Password</string>
+    <string name="invalid_old_password">Invalid Password</string>
+    <style name="failed_edit_profile">Edit Profile Failed! Please try again.</style>
 
     <string name="text_error">Error</string>
     <string name="text_ok">OK</string>
@@ -48,12 +50,12 @@
     <string name="today">Today</string>
     <string name="water_volume">Water Volume</string>
     <string name="total_drink">Total Drink</string>
-    <string name="this_week">This Week</string>
+    <string name="past">Past</string>
     <string name="waterVolDay">xxx</string>
     <string name="totDrinkDay">xxx</string>
     <string name="waterVolWeek">xxx</string>
     <string name="totDrinkWeek">xxx</string>
-    <string name="history">History</string>
+    <string name="history">Drink History</string>
     <string name="logout">LOGOUT</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
@@ -64,6 +66,7 @@
     <string name="confirm_edit">Confirm Edit</string>
 
     <string name="number_weight">Spinner Example</string>
+    <string name="old_password">Old Password</string>
 
 
 </resources>

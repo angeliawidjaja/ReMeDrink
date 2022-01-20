@@ -2,13 +2,14 @@ package com.example.remedrink.datamodel.drink;
 
 import android.annotation.SuppressLint;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Angelia Widjaja on 19-Jan-22 17:43.
  */
-public class MyDrinkItemResponse {
+public class MyDrinkItemResponse implements Serializable {
     private Date createdAt;
     private String drinkSizeType;
     private Integer drinkSize;

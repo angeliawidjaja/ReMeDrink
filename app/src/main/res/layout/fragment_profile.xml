@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/line2" />
 
                     <TextView
-                        android:id="@+id/TV_waterVolumeToday"
+                        android:id="@+id/tv_water_volume_today"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="85dp"
@@ -149,7 +149,7 @@
                         android:text="@string/total_drink"
                         android:textColor="#000000"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/TV_waterVolumeToday"
+                        app:layout_constraintStart_toEndOf="@+id/tv_water_volume_today"
                         app:layout_constraintTop_toBottomOf="@+id/TV_today" />
 
                     <TextView
@@ -157,17 +157,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="@string/waterVolDay"
-                        app:layout_constraintEnd_toEndOf="@+id/TV_waterVolumeToday"
-                        app:layout_constraintStart_toStartOf="@+id/TV_waterVolumeToday"
-                        app:layout_constraintTop_toBottomOf="@+id/TV_waterVolumeToday" />
+                        android:text="0 ml"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_water_volume_today"
+                        app:layout_constraintStart_toStartOf="@+id/tv_water_volume_today"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_water_volume_today" />
 
                     <TextView
                         android:id="@+id/TV_totDrinkDay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="@string/totDrinkDay"
+                        android:text="0 drink(s)"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="@+id/TV_totalDrinkToday"
                         app:layout_constraintStart_toStartOf="@+id/TV_totalDrinkToday"
                         app:layout_constraintTop_toBottomOf="@+id/TV_totalDrinkToday" />
@@ -194,21 +198,21 @@
                             tools:ignore="ImageContrastCheck" />
 
                         <TextView
-                            android:id="@+id/TV_thisWeek"
+                            android:id="@+id/tv_past"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="16dp"
-                            android:text="@string/this_week"
+                            android:text="@string/past"
                             android:textColor="#000000"
                             android:textSize="18sp"
-                            app:layout_constraintBottom_toTopOf="@+id/TV_waterVolumeWeek"
+                            app:layout_constraintBottom_toTopOf="@+id/tv_water_volume_past"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/line" />
 
                         <TextView
-                            android:id="@+id/TV_waterVolumeWeek"
+                            android:id="@+id/tv_water_volume_past"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="85dp"
@@ -218,7 +222,7 @@
                             app:layout_constraintEnd_toStartOf="@+id/TV_totalDrinkWeek"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/TV_thisWeek" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_past" />
 
                         <TextView
                             android:id="@+id/TV_totalDrinkWeek"
@@ -230,25 +234,29 @@
                             android:text="@string/total_drink"
                             android:textColor="#000000"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/TV_waterVolumeWeek"
-                            app:layout_constraintTop_toBottomOf="@+id/TV_thisWeek" />
+                            app:layout_constraintStart_toEndOf="@+id/tv_water_volume_past"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_past" />
 
                         <TextView
                             android:id="@+id/waterVolWeek"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
-                            android:text="@string/waterVolWeek"
-                            app:layout_constraintEnd_toEndOf="@+id/TV_waterVolumeWeek"
-                            app:layout_constraintStart_toStartOf="@+id/TV_waterVolumeWeek"
-                            app:layout_constraintTop_toBottomOf="@+id/TV_waterVolumeWeek" />
+                            android:text="0 ml"
+                            android:textColor="@color/blue"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/tv_water_volume_past"
+                            app:layout_constraintStart_toStartOf="@+id/tv_water_volume_past"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_water_volume_past" />
 
                         <TextView
                             android:id="@+id/totDrinkWeek"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
-                            android:text="@string/totDrinkWeek"
+                            android:text="0 drink(s)"
+                            android:textColor="@color/blue"
+                            android:textSize="18sp"
                             app:layout_constraintEnd_toEndOf="@+id/TV_totalDrinkWeek"
                             app:layout_constraintStart_toStartOf="@+id/TV_totalDrinkWeek"
                             app:layout_constraintTop_toBottomOf="@+id/TV_totalDrinkWeek" />

@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         initViewModel();
         initListener();
         handleObserveFormValidationResult();
-        handleObserveRegisterResult(); // Not Yet
+        handleObserveRegisterResult();
     }
 
     private void handleObserveRegisterResult() {

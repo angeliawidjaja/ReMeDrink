@@ -12,6 +12,8 @@ public class UserResponse {
     @Nullable
     private String password;
     @Nullable
+    private String newPassword;
+    @Nullable
     private String id;
     @Nullable
     private Integer height;
@@ -122,5 +124,14 @@ public class UserResponse {
 
     public void setWaterIntakeGoal(@Nullable Integer waterIntakeGoal) {
         this.waterIntakeGoal = waterIntakeGoal;
+    }
+
+    @Nullable
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(@Nullable String newPassword) {
+        this.newPassword = newPassword;
     }
 }

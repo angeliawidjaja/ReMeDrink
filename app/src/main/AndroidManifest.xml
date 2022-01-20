@@ -16,8 +16,13 @@
         android:theme="@style/Theme.Pathway_jogging"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".app.landing.profile.EditProfileActivity"
-            android:exported="true" />
+            android:name=".app.landing.profile.drinkhistory.DrinkHistoryActivity"
+            android:exported="true"
+            android:label="Drink History"/>
+        <activity
+            android:name=".app.landing.profile.editprofile.EditProfileActivity"
+            android:exported="true"
+            android:label="@string/edit_profile"/>
         <activity
             android:name=".PlankActivity"
             android:exported="true" />
