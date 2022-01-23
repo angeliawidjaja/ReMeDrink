@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.remedrink">
+    package="com.huawei.remedrink">
 
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,7 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pathway_jogging"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:exported="false">
+
+<!--        <meta-data-->
+<!--            android:name="com.huawei.hms.client.channel.androidMarket"-->
+<!--            android:value="false" />-->
+
+        <service android:name=".service.PushService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="push_kit_auto_init_enabled"
+            android:value="true" />
+
         <activity
             android:name=".app.landing.profile.drinkhistory.DrinkHistoryActivity"
             android:exported="true"
@@ -24,10 +40,10 @@
             android:exported="true"
             android:label="@string/edit_profile"/>
         <activity
-            android:name=".PlankActivity"
+            android:name=".app.PlankActivity"
             android:exported="true" />
         <activity
-            android:name=".SquatActivity"
+            android:name=".app.SquatActivity"
             android:exported="true" />
         <activity
             android:name=".app.register.RegisterActivity"
@@ -51,5 +67,11 @@
             </intent-filter>
         </activity>
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
 
 </manifest>

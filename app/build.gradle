@@ -1,12 +1,13 @@
 plugins {
     id 'com.android.application'
+    id 'com.huawei.agconnect'
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.pathway_jogging"
+        applicationId "com.huawei.remedrink"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -15,10 +16,26 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('ReMeDrink.jks')
+            keyAlias 'remedrink'
+            keyPassword 'mobprog123'
+            storePassword 'mobprog123'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true
         }
     }
     compileOptions {
@@ -49,6 +66,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    // HMS
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    implementation 'com.huawei.hms:push:6.1.0.300'
+
 //    library Carousel Picker
 //    compile 'com.github.Vatican-Cameos:CarouselPicker:v1.0'
 }
+
+apply plugin: 'com.huawei.agconnect'
