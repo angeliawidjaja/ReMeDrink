@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +17,6 @@
         android:theme="@style/Theme.Pathway_jogging"
         tools:ignore="GoogleAppIndexingWarning"
         android:exported="false">
-
-<!--        <meta-data-->
-<!--            android:name="com.huawei.hms.client.channel.androidMarket"-->
-<!--            android:value="false" />-->
 
         <service android:name=".service.PushService" android:exported="false">
             <intent-filter>

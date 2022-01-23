@@ -1,5 +1,7 @@
 package com.huawei.remedrink.app.login;
 
+import static com.huawei.remedrink.service.HuaweiConstants.HMS_APP_ID;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -8,10 +10,13 @@ import android.os.Bundle;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.huawei.hms.aaid.HmsInstanceId;
 import com.huawei.remedrink.R;
 import com.huawei.remedrink.app.landing.HomeActivity;
 import com.huawei.remedrink.app.register.RegisterActivity;
@@ -31,11 +36,27 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        obtainToken();
+
         initComponents();
         initViewModel();
         initListener();
         handleObserveFormValidationResult();
         handleObserveLoginResult();
+    }
+
+    private void obtainToken() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    String token = HmsInstanceId.getInstance(getApplicationContext()).getToken(HMS_APP_ID, "HCM");
+                    Log.e("<LOG>", "Get Token: " + token);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     private void doLogin() {
