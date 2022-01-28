@@ -15,6 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.huawei.hms.ads.AdParam;
+import com.huawei.hms.ads.BannerAdSize;
+import com.huawei.hms.ads.HwAds;
+import com.huawei.hms.ads.banner.BannerView;
 import com.huawei.remedrink.R;
 import com.huawei.remedrink.app.PlankActivity;
 import com.huawei.remedrink.app.SquatActivity;
@@ -31,6 +35,27 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        HwAds.init(getActivity());
+
+////-
+//        BannerView bannerView = new BannerView(getActivity());
+//        bannerView.setAdId("testw6vs28auh3");
+//        bannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_SMART);
+////-
+
+        AdParam adParam = new AdParam.Builder().build();
+        binding.hwBannerView.loadAd(adParam);
+
+        BannerView topBannerView = new BannerView(getActivity());
+        topBannerView.setAdId("testw6vs28auh3");
+        topBannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_SMART);
+        topBannerView.loadAd(adParam);
+
+//        RelativeLayout rootView = findViewById(R.id.root_view);
+        binding.hwBannerView.addView(topBannerView);
+
+
 
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         userLoginData = new UserLoginData(requireContext()).getUserLoginData();
@@ -147,4 +172,6 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }
+

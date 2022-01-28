@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pathway_jogging"
         tools:ignore="GoogleAppIndexingWarning"
-        android:exported="false">
+        android:exported="false"
+        android:usesCleartextTraffic="true"
+        >
 
         <service android:name=".service.PushService" android:exported="false">
             <intent-filter>

@@ -32,4 +32,6 @@ public class HomeViewModel extends ViewModel {
     private Integer calculateWaterIntakeGoal(Integer weight) {
         return Double.valueOf(weight * 0.033 * 1000).intValue();
     }
+
+
 }

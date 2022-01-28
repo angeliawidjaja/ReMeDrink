@@ -78,7 +78,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:gravity="center|top"
                 android:orientation="vertical">
                 <TextView
@@ -172,7 +172,38 @@
                         android:text="Advance the exercise"
                         android:textSize="18sp"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="20dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="References:"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="https://www.mountainsandmacros.co.uk/wp-content/uploads/2020/11/68958105-stock-vector-set-of-right-and-wrong-elbow-plank-position-physical-training-for-losing-weight-reduction-in-fat-mas.jpg"
+                        android:textColor="@color/blue"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="https://www.mountainsandmacros.co.uk/wp-content/uploads/2020/11/side-plank-form.jpg"
+                        android:textColor="@color/blue"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="https://palm.southbeachdiet.com/5-simple-steps-to-your-perfect-plank/"
+                        android:textColor="@color/blue"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>

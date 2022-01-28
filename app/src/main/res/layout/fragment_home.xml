@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:hwads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
     android:orientation="vertical"
-    tools:context=".app.landing.home.HomeFragment">
+    tools:context=".app.landing.home.HomeFragment"
+    android:id="@+id/root_view">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -137,10 +139,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="15dp"
+                android:orientation="vertical">
+
+                <com.huawei.hms.ads.banner.BannerView
+                    android:id="@+id/hw_banner_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    hwads:adId="testw6vs28auh3"
+                    hwads:bannerSize="BANNER_SIZE_360_57"
+                    android:layout_marginBottom="15dp"/>
 
                 <TextView
                     android:layout_width="match_parent"

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:gravity="center|top"
                 android:orientation="vertical">
                 <TextView
@@ -130,7 +130,7 @@
                     android:layout_width="370dp"
                     android:layout_height="30dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="10dp">
                     <TextView
                         android:layout_width="65dp"
                         android:layout_height="30dp"
@@ -158,6 +158,30 @@
                         android:layout_height="match_parent"
                         android:text="Repeat the movement"
                         android:textSize="18sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="20dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="References:"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="https://th.thgim.com/life-and-style/fitness/w114zx/article33608209.ece/ALTERNATES/FREE_660/18MPSquat2"
+                        android:textColor="@color/blue"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="https://www.realsimple.com/health/fitness-exercise/workouts/squat-form"
+                        android:textColor="@color/blue"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
