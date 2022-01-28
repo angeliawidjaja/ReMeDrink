@@ -71,6 +71,7 @@ dependencies {
     // HMS
     implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
     implementation 'com.huawei.hms:push:6.1.0.300'
+    implementation 'com.huawei.hms:hianalytics:6.3.2.300'
 
 //    library Carousel Picker
 //    compile 'com.github.Vatican-Cameos:CarouselPicker:v1.0'
