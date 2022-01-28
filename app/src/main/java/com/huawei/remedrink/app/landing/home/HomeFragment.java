@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.huawei.hms.ads.AdListener;
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.BannerAdSize;
 import com.huawei.hms.ads.HwAds;
@@ -28,6 +30,7 @@ import com.huawei.remedrink.datamodel.user.UserResponse;
 
 public class HomeFragment extends Fragment {
 
+    private BannerView bannerView;
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     private UserResponse userLoginData;
@@ -36,25 +39,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        HwAds.init(getActivity());
-
-////-
-//        BannerView bannerView = new BannerView(getActivity());
-//        bannerView.setAdId("testw6vs28auh3");
-//        bannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_SMART);
-////-
-
-        AdParam adParam = new AdParam.Builder().build();
-        binding.hwBannerView.loadAd(adParam);
-
-        BannerView topBannerView = new BannerView(getActivity());
-        topBannerView.setAdId("testw6vs28auh3");
-        topBannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_SMART);
-        topBannerView.loadAd(adParam);
-
-//        RelativeLayout rootView = findViewById(R.id.root_view);
-        binding.hwBannerView.addView(topBannerView);
-
+        HwAds.init(getContext());
 
 
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -87,6 +72,46 @@ public class HomeFragment extends Fragment {
     private void setHeightWeight() {
         binding.weightValue.setText(userLoginData.getWeight() + " kg");
         binding.heightValue.setText(userLoginData.getHeight() + " cm");
+    }
+
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if(view != null) {
+            bannerView = view.findViewById(R.id.hw_banner_view);
+            bannerView.setAdId("testw6vs28auh3");
+
+            AdListener adListener = new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                }
+                @Override
+                public void onAdFailed(int errorCode) {
+                    Toast.makeText(view.getContext(), "failed " + errorCode, Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onAdOpened() {
+                }
+                @Override
+                public void onAdClicked() {
+                }
+                @Override
+                public void onAdLeave() {
+                }
+                @Override
+                public void onAdClosed() {
+                }
+            };
+            bannerView.setAdListener(adListener);
+
+            Log.d("bannerView", "onViewCreated: "+bannerView);
+            bannerView.setBannerAdSize(BannerAdSize.BANNER_SIZE_360_57);
+            // Set the refresh interval to 60 seconds.
+            bannerView.setBannerRefresh(60);
+            // Create an ad request to load an ad.
+            AdParam adParam = new AdParam.Builder().build();
+            bannerView.loadAd(adParam);
+        }
     }
 
     private void initListener() {
@@ -164,6 +189,7 @@ public class HomeFragment extends Fragment {
                                 (dialog, id) -> dialog.dismiss()).show();
             }
         });
+
 
     }
 

@@ -7,8 +7,16 @@
     android:layout_height="match_parent"
     android:background="@color/light_blue"
     android:orientation="vertical"
-    tools:context=".app.landing.home.HomeFragment"
-    android:id="@+id/root_view">
+    tools:context=".app.landing.home.HomeFragment">
+
+    <com.huawei.hms.ads.banner.BannerView
+        android:id="@+id/hw_banner_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        hwads:adId="testw6vs28auh3"
+        hwads:bannerSize="BANNER_SIZE_360_57"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -145,13 +153,8 @@
                 android:layout_marginRight="15dp"
                 android:orientation="vertical">
 
-                <com.huawei.hms.ads.banner.BannerView
-                    android:id="@+id/hw_banner_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    hwads:adId="testw6vs28auh3"
-                    hwads:bannerSize="BANNER_SIZE_360_57"
-                    android:layout_marginBottom="15dp"/>
+
+
 
                 <TextView
                     android:layout_width="match_parent"
