@@ -24,6 +24,8 @@ import com.huawei.remedrink.datamodel.user.UserLoginData;
 import com.huawei.remedrink.datamodel.user.UserResponse;
 import com.huawei.remedrink.service.PushService;
 
+import java.sql.Date;
+
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
@@ -56,8 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             binding.loading.setVisibility(View.GONE);
             if (loginResult.getError() != null) {
                 showLoginFailed(loginResult.getError());
-            }
-            else {
+            } else {
                 obtainToken(loginResult);
             }
         });
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initListener() {
         loginButton.setOnClickListener(v -> {
-            if(loginViewModel.validateLoginData(binding.email.getText().toString(),
+            if (loginViewModel.validateLoginData(binding.email.getText().toString(),
                     binding.password.getText().toString())) {
                 doLogin();
             }
@@ -103,7 +104,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleLoginSuccess(UserResponse user) {
         saveUserIntoSharedPref(user);
-        PushService.sendNotification("Welcome to ReMeDrink!", "Hi, " + user.getFullname() + "!\nThank you for downloading ReMeDrink!\nAlways track down your water intake every day!");
+        PushService.sendNotification(
+                "Welcome to ReMeDrink!"
+                ,"Hi, " + user.getFullname() + "!\nThank you for downloading ReMeDrink!\nAlways track down your water intake every day!"
+                , getApplicationContext()
+                );
         intentToHome();
     }
 
@@ -132,6 +137,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void saveUserIntoSharedPref(UserResponse user) {
         user.setWaterIntakeIdeal(user.getWaterIntakeGoal());
+        user.setScheduleJobDate(new Date(System.currentTimeMillis()));
+        user.setTodayJobScheduled(false);
+        user.setNotifOn(true);
         UserLoginData loginData = new UserLoginData(getApplicationContext());
         loginData.saveUser(user);
     }

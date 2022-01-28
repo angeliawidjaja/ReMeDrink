@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,13 @@ import com.huawei.remedrink.databinding.FragmentTrackerBinding;
 import com.huawei.remedrink.datamodel.drink.MyDrinkItemResponse;
 import com.huawei.remedrink.datamodel.user.UserLoginData;
 import com.huawei.remedrink.datamodel.user.UserResponse;
+import com.huawei.remedrink.service.PushService;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
-public class TrackerFragment extends Fragment {
+public class TrackerFragment extends Fragment implements PushService.NotifState {
 
     private TrackerViewModel trackerViewModel;
     private FragmentTrackerBinding binding;
@@ -39,6 +42,7 @@ public class TrackerFragment extends Fragment {
         View root = binding.getRoot();
 
         initComponents();
+        initListener();
         requestTodayDrinkHistoryData();
         handleObserveDrinkHistoryDataResult();
         waterIntake();
@@ -46,16 +50,42 @@ public class TrackerFragment extends Fragment {
         return root;
     }
 
+    private void initListener() {
+        binding.ivDrinkReminder.setOnClickListener(v -> {
+            if (userLoginData.getNotifOn()) {
+                PushService.turnOffNotification(getContext(), this);
+            } else {
+                PushService.turnOnNotification(getContext(), this);
+            }
+        });
+    }
+
+    @SuppressLint({"SetTextI18n"})
     private void initComponents() {
-        binding.tvIdealWaterIntakeValue.setText(userLoginData.getWaterIntakeIdeal().toString());
-        binding.tvWaterIntakeGoalValue.setText(userLoginData.getWaterIntakeGoal().toString());
+        userLoginData = new UserLoginData(requireContext()).getUserLoginData();
+        handleReminderIconState();
+        binding.tvIdealWaterIntakeValue.setText(userLoginData.getWaterIntakeIdeal() + " ml");
+        binding.tvWaterIntakeGoalValue.setText(userLoginData.getWaterIntakeGoal() + " ml");
         binding.waterIntakeProgressBar.setMax(userLoginData.getWaterIntakeGoal());
         binding.tvMaxIntake.setText(userLoginData.getWaterIntakeGoal().toString());
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void handleReminderIconState() {
+        Log.d("<RE>", "handleReminderIconState: " + userLoginData.getNotifOn());
+        if(userLoginData.getNotifOn()) {
+            binding.ivDrinkReminder.setImageDrawable(getResources().getDrawable(R.drawable.ic_cancel_reminder));
+            binding.tvDrinkReminderLabel.setText(R.string.disable_reminder);
+        } else {
+            binding.ivDrinkReminder.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_reminder));
+            binding.tvDrinkReminderLabel.setText(R.string.enable_reminder);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        userLoginData = new UserLoginData(requireContext()).getUserLoginData();
         initComponents();
     }
 
@@ -63,7 +93,7 @@ public class TrackerFragment extends Fragment {
     private void handleObserveDrinkHistoryDataResult() {
         trackerViewModel.getMyDrinkListResponse().observe(getViewLifecycleOwner(), drinkModel -> {
             binding.tvCurrIntake.setText(drinkModel.getTotalWaterIntake().toString());
-            binding.waterIntakeProgressBar.setProgress(120);
+            binding.waterIntakeProgressBar.setProgress(drinkModel.getTotalWaterIntake());
             if(drinkModel.getDrinkList().isEmpty()) return;
             handleAdapter(drinkModel.getDrinkList());
         });
@@ -98,7 +128,7 @@ public class TrackerFragment extends Fragment {
             LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             final View formsAddWaterIntake = inflater.inflate(R.layout.pick_water, null, false);
-            final EditText inp_water = (EditText) formsAddWaterIntake.findViewById(R.id.num_add_water);
+            final EditText inp_water = formsAddWaterIntake.findViewById(R.id.num_add_water);
 
             new AlertDialog.Builder(getActivity())
                     .setView(formsAddWaterIntake)
@@ -117,9 +147,15 @@ public class TrackerFragment extends Fragment {
     private void handleAddDrink(Integer drinkSize) {
         String drinkSizeType;
         if (drinkSize <= 300) drinkSizeType = "Small";
-        else if (drinkSize > 300 && drinkSize <= 600) drinkSizeType = "Medium";
+        else if (drinkSize <= 600) drinkSizeType = "Medium";
         else drinkSizeType = "Large";
 
         trackerViewModel.addNewDrink(new MyDrinkItemResponse(new Date(), drinkSizeType, drinkSize));
+    }
+
+    @Override
+    public void onNotificationStateChange() {
+        userLoginData = new UserLoginData(requireContext()).getUserLoginData();
+        handleReminderIconState();
     }
 }

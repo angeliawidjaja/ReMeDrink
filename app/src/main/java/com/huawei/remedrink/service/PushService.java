@@ -21,17 +21,20 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.google.gson.Gson;
+import com.huawei.hms.analytics.HiAnalyticsInstance;
 import com.huawei.hms.push.HmsMessageService;
 import com.huawei.hms.push.HmsMessaging;
 import com.huawei.hms.push.RemoteMessage;
 import com.huawei.remedrink.R;
 import com.huawei.remedrink.app.splash.SplashScreenActivity;
 import com.huawei.remedrink.datamodel.user.AccessTokenModel;
+import com.huawei.remedrink.datamodel.user.UserLoginData;
+import com.huawei.remedrink.datamodel.user.UserResponse;
 import com.huawei.remedrink.retrofit.ApiClient;
 import com.huawei.remedrink.retrofit.ApiService;
-import com.huawei.remedrink.service.pushmodel.NotifMessageModel;
-import com.huawei.remedrink.service.pushmodel.PushBodyModel;
-import com.huawei.remedrink.service.pushmodel.PushNotifModel;
+import com.huawei.remedrink.datamodel.pushmodel.NotifMessageModel;
+import com.huawei.remedrink.datamodel.pushmodel.PushBodyModel;
+import com.huawei.remedrink.datamodel.pushmodel.PushNotifModel;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -152,8 +155,10 @@ public class PushService extends HmsMessageService {
         });
     }
 
-    public static void sendNotification(String title, String message) {
-        obtainAccessToken(title, message);
+    public static void sendNotification(String title, String message, Context context) {
+        if(new UserLoginData(context).getUserLoginData().getNotifOn()) {
+            obtainAccessToken(title, message);
+        }
     }
 
     private static PushNotifModel stringifyJSONDataModelAndHandleFinalModel(String title, String message) {
@@ -166,23 +171,37 @@ public class PushService extends HmsMessageService {
         return new PushNotifModel(notifData);
     }
 
-    public static void turnOnNotification(Context context) {
+    public static void turnOnNotification(Context context, NotifState callback) {
         HmsMessaging.getInstance(context).turnOnPush().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Log.i(TAG, "turnOnPush Complete");
+                handleSaveNotifState(context, true, callback);
             } else {
                 Log.e(TAG, "turnOnPush failed: ret=" + task.getException().getMessage());
             }
         });
     }
 
-    public static void turnOffNotification(Context context) {
+    public static void turnOffNotification(Context context, NotifState callback) {
         HmsMessaging.getInstance(context).turnOffPush().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Log.i(TAG, "turnOnPush Complete");
+                Log.i(TAG, "turnOffPush Complete");
+                handleSaveNotifState(context, false, callback);
             } else {
-                Log.e(TAG, "turnOnPush failed: ret=" + task.getException().getMessage());
+                Log.e(TAG, "turnOffPush failed: ret=" + task.getException().getMessage());
             }
         });
+    }
+
+    private static void handleSaveNotifState(Context context, boolean notifState, NotifState callback) {
+        UserLoginData userLoginData = new UserLoginData(context);
+        UserResponse user = userLoginData.getUserLoginData();
+        user.setNotifOn(notifState);
+        if(userLoginData.saveUser(user))
+            callback.onNotificationStateChange();
+    }
+
+    public interface NotifState {
+        void onNotificationStateChange();
     }
 }

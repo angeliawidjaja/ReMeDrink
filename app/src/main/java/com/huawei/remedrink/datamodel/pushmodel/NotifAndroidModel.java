@@ -1,4 +1,4 @@
-package com.huawei.remedrink.service.pushmodel;
+package com.huawei.remedrink.datamodel.pushmodel;
 
 /**
  * Created by Angelia Widjaja on 27-Jan-22 11:47.

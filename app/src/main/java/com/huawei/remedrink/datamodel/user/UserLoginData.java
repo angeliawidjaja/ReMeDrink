@@ -30,11 +30,12 @@ public class UserLoginData {
                 : new UserResponse();
     }
 
-    public void saveUser(UserResponse user) {
+    public boolean saveUser(UserResponse user) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String json = gson.toJson(user);
         editor.putString(key, json);
         editor.apply();
+        return true;
     }
 
     public void deleteUser() {

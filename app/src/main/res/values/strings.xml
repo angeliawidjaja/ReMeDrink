@@ -64,9 +64,17 @@
     <string name="change_password">Change Password</string>
     <string name="prompt_age">Enter your age</string>
     <string name="confirm_edit">Confirm Edit</string>
+    <string name="new_password">New Password</string>
+    <string name="prompt_new_password">Enter your new password</string>
+    <string name="prompt_old_password">Enter old password for validation</string>
 
     <string name="number_weight">Spinner Example</string>
     <string name="old_password">Old Password</string>
+    <string name="add_water_intake">Add Water Intake</string>
+    <string name="enable_reminder">Enable Reminder</string>
+    <string name="disable_reminder">Disable Reminder</string>
+    <string name="water_intake_goal">Water Intake Goal</string>
+    <string name="today_drink_history">Today Drink History</string>
 
 
 </resources>

@@ -6,7 +6,7 @@ import static com.huawei.remedrink.service.HuaweiConstants.PUSH_CONTENT_TYPE;
 import com.huawei.remedrink.datamodel.drink.MyDrinkItemResponse;
 import com.huawei.remedrink.datamodel.user.AccessTokenModel;
 import com.huawei.remedrink.datamodel.user.UserResponse;
-import com.huawei.remedrink.service.pushmodel.PushNotifModel;
+import com.huawei.remedrink.datamodel.pushmodel.PushNotifModel;
 
 import java.util.List;
 
