@@ -2,6 +2,8 @@ package com.huawei.remedrink.datamodel.user;
 
 import androidx.annotation.Nullable;
 
+import java.sql.Date;
+
 public class UserResponse {
     @Nullable
     private String fullname;
@@ -25,6 +27,11 @@ public class UserResponse {
     private Integer waterIntakeGoal;
     @Nullable
     private Integer error;
+    @Nullable
+    private String token;
+    private Date scheduleJobDate;
+    private Boolean isTodayJobScheduled;
+    private Boolean isNotifOn;
 
     public UserResponse(@Nullable Integer error) {
         this.error = error;
@@ -133,5 +140,38 @@ public class UserResponse {
 
     public void setNewPassword(@Nullable String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    @Nullable
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(@Nullable String token) {
+        this.token = token;
+    }
+
+    public Date getScheduleJobDate() {
+        return scheduleJobDate;
+    }
+
+    public void setScheduleJobDate(Date scheduleJobDate) {
+        this.scheduleJobDate = scheduleJobDate;
+    }
+
+    public Boolean getTodayJobScheduled() {
+        return isTodayJobScheduled;
+    }
+
+    public void setTodayJobScheduled(Boolean todayJobScheduled) {
+        isTodayJobScheduled = todayJobScheduled;
+    }
+
+    public Boolean getNotifOn() {
+        return isNotifOn;
+    }
+
+    public void setNotifOn(Boolean notifOn) {
+        isNotifOn = notifOn;
     }
 }

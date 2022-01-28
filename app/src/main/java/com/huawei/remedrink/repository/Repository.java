@@ -24,7 +24,7 @@ public class Repository {
     private final ApiService apiService;
 
     public Repository() {
-        apiService = ApiClient.getApiService();
+        apiService = ApiClient.getApiService(ApiClient.UrlType.MOCK);
     }
 
     public static Repository getInstance() {
@@ -45,7 +45,7 @@ public class Repository {
 
             @Override
             public void onFailure(Call<List<UserResponse>> call, Throwable t) {
-                Log.d("<RES>", "getUsers: " + t.getMessage());
+                Log.e("<RES>", "getUsers: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });
@@ -64,7 +64,7 @@ public class Repository {
 
             @Override
             public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
-                Log.d("<RES>", "createUser: " + t.getMessage());
+                Log.e("<RES>", "createUser: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });
@@ -82,7 +82,7 @@ public class Repository {
 
             @Override
             public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
-                Log.d("<RES>", "updateUser: " + t.getMessage());
+                Log.e("<RES>", "updateUser: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });
@@ -100,7 +100,7 @@ public class Repository {
 
             @Override
             public void onFailure(Call<List<MyDrinkItemResponse>> call, Throwable t) {
-                Log.d("<RES>", "getMyDrinkHistory: " + t.getMessage());
+                Log.e("<RES>", "getMyDrinkHistory: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });
@@ -118,7 +118,7 @@ public class Repository {
 
             @Override
             public void onFailure(Call<MyDrinkItemResponse> call, Throwable t) {
-                Log.d("<RES>", "getMyDrinkHistory: " + t.getMessage());
+                Log.e("<RES>", "getMyDrinkHistory: " + t.getMessage());
                 requestHandler.onResult(null);
             }
         });

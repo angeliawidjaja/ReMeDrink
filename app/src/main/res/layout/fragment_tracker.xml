@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="20dp"
-                        android:text="Water Intake Goal"
+                        android:text="@string/water_intake_goal"
                         android:textSize="10sp"
                         app:layout_constraintBottom_toTopOf="@+id/tv_water_intake_goal_value"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -179,33 +179,51 @@
                     </RelativeLayout>
 
                     <ImageView
-                        android:id="@+id/iv_add_drink_reminder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:src="@drawable/ic_add_reminder"
-                        app:layout_constraintEnd_toStartOf="@id/iv_add_water_intake"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rl_progress" />
-
-                    <ImageView
                         android:id="@+id/iv_add_water_intake"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_add_water"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/rl_progress" />
 
-                    <ImageView
-                        android:id="@+id/iv_cancel_drink_reminder"
+                    <TextView
+                        android:id="@+id/tv_add_water_intake_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_cancel_reminder"
-                        android:visibility="gone"
+                        android:text="@string/add_water_intake"
+                        android:textColor="#77ACF1"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:layout_marginHorizontal="18dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/iv_add_water_intake"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_drink_reminder"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/iv_add_water_intake"
+                        tools:src="@drawable/ic_add_reminder"
+                        app:layout_constraintStart_toEndOf="@id/iv_add_water_intake"
                         app:layout_constraintTop_toBottomOf="@+id/rl_progress" />
+
+                    <TextView
+                        android:id="@+id/tv_drink_reminder_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#77ACF1"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="35dp"
+                        tools:text="@string/enable_reminder"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_add_water_intake"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_drink_reminder" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -216,7 +234,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="14dp"
                 android:layout_marginTop="12dp"
-                android:text="Today Drink History"
+                android:text="@string/today_drink_history"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp" />
 
