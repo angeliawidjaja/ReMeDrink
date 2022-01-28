@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.huawei.hms.aaid.HmsInstanceId;
 import com.huawei.remedrink.R;
@@ -23,6 +22,7 @@ import com.huawei.remedrink.app.register.RegisterActivity;
 import com.huawei.remedrink.databinding.ActivityLoginBinding;
 import com.huawei.remedrink.datamodel.user.UserLoginData;
 import com.huawei.remedrink.datamodel.user.UserResponse;
+import com.huawei.remedrink.service.PushService;
 
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
@@ -35,28 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        obtainToken();
-
         initComponents();
         initViewModel();
         initListener();
         handleObserveFormValidationResult();
         handleObserveLoginResult();
-    }
-
-    private void obtainToken() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    String token = HmsInstanceId.getInstance(getApplicationContext()).getToken(HMS_APP_ID, "HCM");
-                    Log.e("<LOG>", "Get Token: " + token);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
     }
 
     private void doLogin() {
@@ -75,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 showLoginFailed(loginResult.getError());
             }
             else {
-                handleLoginSuccess(loginResult);
+                obtainToken(loginResult);
             }
         });
     }
@@ -120,8 +103,25 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleLoginSuccess(UserResponse user) {
         saveUserIntoSharedPref(user);
-        Toast.makeText(getApplicationContext(), getString(R.string.text_welcome) + user.getFullname(), Toast.LENGTH_LONG).show();
+        PushService.sendNotification("Welcome to ReMeDrink!", "Hi, " + user.getFullname() + "!\nThank you for downloading ReMeDrink!\nAlways track down your water intake every day!");
         intentToHome();
+    }
+
+    private void obtainToken(UserResponse user) {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    String token = HmsInstanceId.getInstance(getApplicationContext()).getToken(HMS_APP_ID, "HCM");
+                    Log.d("<PushNotifLog>", "Token: " + token);
+                    user.setToken(token);
+                    handleLoginSuccess(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    handleLoginSuccess(user);
+                }
+            }
+        }.start();
     }
 
     private void intentToHome() {

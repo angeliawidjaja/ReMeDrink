@@ -25,6 +25,8 @@ public class UserResponse {
     private Integer waterIntakeGoal;
     @Nullable
     private Integer error;
+    @Nullable
+    private String token;
 
     public UserResponse(@Nullable Integer error) {
         this.error = error;
@@ -133,5 +135,14 @@ public class UserResponse {
 
     public void setNewPassword(@Nullable String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    @Nullable
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(@Nullable String token) {
+        this.token = token;
     }
 }
