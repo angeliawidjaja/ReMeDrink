@@ -75,6 +75,7 @@
     <string name="disable_reminder">Disable Reminder</string>
     <string name="water_intake_goal">Water Intake Goal</string>
     <string name="today_drink_history">Today Drink History</string>
+    <string name="get_in_shape">Get In Shape</string>
 
 
 </resources>
