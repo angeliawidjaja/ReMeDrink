@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.huawei.remedrink.R;
 import com.huawei.remedrink.databinding.ActivityRegisterBinding;
+import com.huawei.remedrink.service.CryptoUtil;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -95,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void doRegister(String fullName, String username, String email, String password) {
         binding.loading.setVisibility(View.VISIBLE);
-        registerViewModel.register(fullName, username, email, password);
+        registerViewModel.register(fullName, username, email, CryptoUtil.encrypt(password));
     }
 
     private void initViewModel() {

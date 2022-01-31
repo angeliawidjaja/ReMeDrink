@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.huawei.remedrink.R;
 import com.huawei.remedrink.datamodel.user.UserResponse;
 import com.huawei.remedrink.repository.Repository;
+import com.huawei.remedrink.service.CryptoUtil;
 
 public class LoginViewModel extends ViewModel {
 
@@ -23,10 +24,11 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(String email, String password) {
+        String encrypted_password = CryptoUtil.encrypt(password);
         repository.getUsers(userList -> {
             if(userList != null && !userList.isEmpty()) {
                 for (UserResponse user: userList) {
-                    if(user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                    if(user.getEmail().equals(email) && user.getPassword().equals(encrypted_password)) {
                         loginResponse.setValue(user);
                         return;
                     }
