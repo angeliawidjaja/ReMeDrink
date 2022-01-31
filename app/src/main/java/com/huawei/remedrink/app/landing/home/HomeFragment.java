@@ -60,8 +60,8 @@ public class HomeFragment extends Fragment {
 
     private void handleUpdateData() {
         homeViewModel.getUserData().observe(getViewLifecycleOwner(), userResponse -> {
-            setHeightWeight();
             new UserLoginData(requireContext()).saveUser(userResponse);
+            setHeightWeight();
         });
     }
 
@@ -72,7 +72,6 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     private void setHeightWeight() {
-        userLoginData = new UserLoginData(requireContext()).getUserLoginData();
         binding.weightValue.setText(userLoginData.getWeight() + " kg");
         binding.heightValue.setText(userLoginData.getHeight() + " cm");
     }
